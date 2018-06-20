@@ -6,9 +6,9 @@ used in virtually every computer-based chemistry application.
 
 ## Defining the terms
 
-SMILES = __S__implified __M__olecular __I__nput __L__ine __E__diting __S__pecification
+* SMILES = __S__ implified __M__ olecular __I__ nput __L__ ine __E__ diting __S__ pecification
 
-SMARTS = __SM__ILES __Ar__bitrary __T__arget __S__pecification 
+* SMARTS = __SM__ ILES __Ar__ bitrary __T__ arget __S__ pecification
 
 A SMILES defines a specific chemical compound.  A SMARTS is an expression that looks 
 for a match of a particular arrangement of atoms/bonds in that compound.
