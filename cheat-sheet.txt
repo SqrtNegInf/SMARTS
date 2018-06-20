@@ -1,0 +1,49 @@
+
+SMARTS Atomic Primitives
+*       wildcard            any atom
+a       aromatic            any aromatic atom
+A       aliphatic           any aliphatic atom
+D{n}    degree              {n} explicit connections
+H{n}    total-H-count       {n} attached hydrogens
+h{n}    implicit-H-count    {n} implicit hydrogens
+R{n}    ring membership     in {n} SSSR rings
+r{n}    ring size           in smallest SSSR ring of size {n}
+v{n}    valence             total bond order {n}
+X{n}    connectivity        {n} total connections
+x{n}    ring connectivity   {n} total ring connections
+-{n}    negative charge     -1 charge (-- is -2, etc)
++{n}    positive charge     +1 charge (++ is +2, etc)
+#{n}    atomic number       atomic number {n}
+
+(SSSR = smallest set of smallest rings)
+
+SMARTS Bond Primitives
+-       single bond (aliphatic)
+=       double bond
+#       triple bond
+:       aromatic bond
+@       any ring bond
+~       any bond (wildcard)
+
+SMARTS Logical Operators
+exclamation     !e1     not e1      (highest precedence)
+ampersand       e1&e2   a1 and e2 
+comma           e1,e2   e1 or e2
+semicolon       e1;e2   a1 and e2   (lowest precedence)
+
+Recursive SMARTS (define an atomic environment)
+C[$(aaO);$(aaaN)]   C ortho to O and meta to N
+
+Biobyte macros
+ {C1}   C, aliphatic ring, no double bond 
+ {c2}   c, aromatic ring,  no double bond 
+ {s2}   s, aromatic ring,  no double bond 
+ {n2}   n, aromatic ring,  no double bond 
+ {n3}   n, aromatic ring,  no heavy atom bond
+ {C5}   C, aliphatic ring, no double bond to oxygen
+ {c6}   c, aromatic ring,  no double bond to oxygen
+ {n7}   n, aromatic ring, with H0 or H1, no non-ring bonds
+ {C}    isolating carbon
+ {!C}   fragment carbon
+ {SxN}  structure 'S' repreated 'N' times
+r{I,J}  range of ring sizes
