@@ -1,31 +1,27 @@
 c
-c screen -- screen compound for known difficulties
+c screen.f -- screen compound to identify scaffolds needing correction
+c NB: Some screens are just 'warnings', and add no ClogP correction value
 c
-c David H. 11-Jan-2001
-c  removed warning about charged structures
-c David H.  3-OCT-1997 15:05:50 
-c  removed old warnings for steroids & alkaloids (55 & 56)
-c David H.  3-OCT-1997 05:57:43 
-c  planar amide audit item (j/10)
-c David H.  3-SEP-1997 00:00:00 
-c  glycoside audit item (i/9)
-c David H.  6-MAY-1997 05:39:38 
-c  numerous changes in Fall '95 and fixes in '96
-c Dave W.   15-FEB-1998
-c  calls new (non-database, non-WLN) functions for steroids and sugars
+c Scaffold screens consist of a mixture of custom code and SMARTS targets. The trade-off
+c is that while SMARTS targets are relatively easy to write, they are slow at runtime. Custom
+c code is generally 10x or more faster, but harder to write/maintain.
 c
+c To reduce the runtime penalty for SMARTS, a quick analysis is done for the input compound,
+c tallying atoms, bonds, rings (sizes and counts), basic structural features, etc.  This is 
+c used to avoid running a lengthy SMARTS search when it cannot possibly succeed (say the target
+c contains two nitrogens, but the compound has only one).
 c
-c     subroutine  screen( warn, pep_cor, iflag )
+c A good comparison between the two approaches can be seen in the current SMARTS-based 
+c 'phenothiazine' code (around line 500) and the previously-used custom code, left commented 
+c just after.
+c  
       subroutine  screen( warn, iflag )
       implicit none
-C #include "maxima.h"
       include '$BB_ROOT/h/maxima.inc'
-C #include "clogp.h"
       include '$BB_ROOT/h/clogp.inc'
-C #include "hbond.h"
       include '$BB_ROOT/h/hbond.inc'
-C #include "genie.h"
       include '$BB_ROOT/h/genie.inc'
+c
       real      dummy, dsink, total, value, hbond_factor, hbondval, me_ether, cy_bz_ester, clox_flox,
      *          bz_tunnel, phen_val, ph_thiaz1, ph_thiaz2, pyr_dpalky, pyr_dparom, amide_nh,
      *          pyr_dpnone, pyr_dpnfix, pl_amide, tri_amide, lactone_dibenz, purine_n_chain, 
@@ -37,23 +33,21 @@ C #include "genie.h"
      *          al_s, al_n, al_o, al_or, al_nr, ar_n, ar_nh, ar_o, al_c, at_bz, at_st, al_carb, 
      *          ar_carb, ar_c, at_f, at_cl, at_br, at_halo, db_cc, db_ccr, ar_cn, al_n3,
      *          al_eo, ar_eo, al_amide, ar_amide, at_cf3, ar_s, ch3, s184, cnn, at_oh, al_nhr
-c     integer   iflag, i, j, jj, k, kk, l, bzt_fr, bzt_arom, bzt_cy, bzt_n
       integer   iflag, i, j, jj, k, kk, l, bzt_fr, bzt_arom, bzt_cy, bzt_n, c1, c2, c3, c4, n1, n2, n3
       character cvar40*40
-c     character cvar40*40, fstr*40
       logical   warn, got_carbonyl, got_n_h, bzt_no2, seen_cy(mxcy), pyrazole, pyrazine, piperidine, piperazine,
      *          got_n_alkyl, got_n_arom, got_f, pass1, sok, fused_ar, arar
       character envi(3)*10, cclass*10, ctype*6, bzt_f*80
 c
       logical   fc_has, debug, debugg, debugv, r186, r187
       integer   list_i(3,2), b, tmp1, tmp2
-c     character*10 envi(3)
-c     real       mw, massof
       data pass1 /.true./
       data debug /.false./
+c
+c these flags can be enabled to collect information for performance auditing
+c
       data debugg /.false./
       data debugv /.false./
-c     data debugv /.false./
 c
 c rule 185 blocks all scaffold corrections
 c rule 186 blocks subset: all non-SMARTS 
@@ -123,7 +117,6 @@ c
       cyal  = 0
       cyar  = 0
       cy3   = 0
-c     cy4   = 0
       cy5   = 0
       cyal5 = 0
       cyar5 = 0
@@ -140,7 +133,6 @@ c     cy4   = 0
          if (cylen(i).gt.cymax) cymax = cylen(i)
          if (cylen(i).lt.cymin) cymin = cylen(i)
          if (cylen(i).eq. 3) cy3   = cy3 + 1
-c        if (cylen(i).eq. 4) cy4   = cy4 + 1
          if (cylen(i).eq. 5) cy5   = cy5 + 1
          if (cylen(i).eq. 5 .and.       cyarom(i)) cyar5   = cyar5 + 1
          if (cylen(i).eq. 5 .and. .not. cyarom(i)) cyal5   = cyal5 + 1
@@ -189,14 +181,6 @@ c        if (cylen(i).eq. 4) cy4   = cy4 + 1
             if (c1.eq.5 .and. n1.eq.1) piperidine = .true.
          endif
  10   continue
-c
-c get MW for minimum size checks
-c David H.  2015-08-13 used just once, it does not speed things up
-c
-c     mw = 0.0
-c     do 11 i=1,n
-c       mw = mw + massof(i)
-c11   continue
 c
 c atom analysis
 c
@@ -316,10 +300,11 @@ c
  100  continue
       at_halo = at_f + at_cl + at_br
 c
+c=================================================================================
 c corrections start here
+c=================================================================================
 c
-c
-c  steroid and cyclic sugar corrections (contributed by Dave Weininger 15 Feb 1998)
+c  steroid and cyclic sugar
 c
       if (r186 .and. audit_status(1) .and. n.ge.18 .and. fatom.ge.6 .and. ncycle.ge.4 .and. cyal.ge.3) then
          if (debugg) print *, 'screen: 1 steroids/glycosides (no SMARTS)'
@@ -356,21 +341,14 @@ c
       endif
 c
 c pyridone dipole factor
-c David H.  Fri Apr  4 15:08:03 PDT 2014
-c  skip correction for aromatic fused rings (no 'audit' for it)
-c David H.  Tue Aug 26 06:48:47 PDT 2003
+c  skip correction for aromatic fused rings
 c  added '*nn(*)*' (diazole-n-subst)
-c David H.   6-SEP-1997 04:57:02 
 c  tweak value based on type of N substitution
-c David H.   2-SEP-1997 07:18:20 
 c  allow phenyl substitution on N
-c David H.  28-MAY-1996 10:20:00
 c  apply correction 6-membered aromatic rings that have both carbonyl fragment & nitrogen
-c David H.   3-MAR-1996 09:00:00
 c  discarded Elecias code, completely redone
 c
       if (r186 .and. audit_status(4) .and. ar_n.ge.1 .and. ar_carb.ge.1 .and. cy6.ge.1) then
-c     if (debugg) print *, 'screen: 110a pyridone dipole (no SMARTS)'
       hbond_factor = 1
       do 710 i=1,ncycle
           if (.not.cyarom(i) .or. 6.ne.cylen(i)) goto 710
@@ -381,28 +359,14 @@ c     if (debugg) print *, 'screen: 110a pyridone dipole (no SMARTS)'
           got_f        = .false.
           do 709 j=1,6
               k  = cycle(i,j)
-c             if (audit_status(xxx) .and. atsymb(k)(1:1).eq.'n' .and. cmap(k).gt.1) goto 708
               jj = fmap(k)
               if (jj .le. 0) goto 709
-c DH-20141124 no-op for all of MASTER
-c             if (audit_status(xxx) .and. hbond(jj).ne.0) hbond_factor = hbondval ! was 107
               if (fsmile(jj)(1:8) .eq. 'ac(a)=O ') got_carbonyl = .true.
               if (fsmile(jj)(1:7) .eq. 'a[nH]a ' ) got_n_h      = .true.
               if (fsmile(jj)(1:7) .eq. 'An(a)a ' ) got_n_alkyl  = .true.
               if (fsmile(jj)(1:7) .eq. 'Zn(a)a ' ) got_n_alkyl   = .true.  
               if (fsmile(jj)(1:7) .eq. 'an(a)a ' .and. cmap(k).eq.1) got_n_arom = .true.
-c             do 708 k=1,ncon(j)
-c                got_nn = .false.
-c                got_f  = .false.
-c                kk = con(j,k)
-c                if (atsymb(kk).ne.'n') goto 708
-c                do 708 l=1,ncon(kk)
-c                   ll = con(kk,l)
-c                   if (atsymb(ll)(1:1).eq.'n') got_nn = .true.
-c                   if (atsymb(ll)(1:1).eq.'F') got_f = .true.
- 708          continue
  709      continue
-c         if (audit_status(xxx) .and. got_f .and. got_nn .and. got_n_h) goto 711
           if (r187 .and. audit_status(110) .and. got_carbonyl .and. got_n_h) then
               if (debugg) print *, 'screen: 110a pyridone dipole'
               if (debugv) print *, 'vectar: 110 c1[n;H]ccc(=O)c1O'
@@ -421,17 +385,6 @@ c         if (audit_status(xxx) .and. got_f .and. got_nn .and. got_n_h) goto 711
               if (hbond_factor.ne.1) cvar40 = ' Pyridone dipole factor (alkyl) [xx%]'
               call outlin(cclass,ctype,cvar40,' ',value)
               dummy = total(value)
-c             if (audit_status(xxx)) then
-c                vectar(0) = 'c(O)cCNC=O'
-cc               vectar(0) = 'Cn1ccc(=O)c(O)c1CNC=O'
-c                call search( 0, 'ANYONE', sok )
-c                if (nhits .ne. 0) then
-c                   cvar40 = ' Pyridone ortho (hydroxy/benzyl-amide)'
-c                   value = 0.8
-c                   call outlin(cclass,ctype,cvar40,' ',value)
-c                   dummy = total(value)
-c                endif
-c             endif
           else if (r186 .and. audit_status(112) .and. got_carbonyl .and. got_n_arom ) then
               if (debugg) print *, 'screen: 110c pyridone dipole (no SMARTS)'
               cvar40 = ' Pyridone dipole factor (aromatic)'
@@ -448,7 +401,6 @@ c methoxy ether (aliphatic)
 c apply when bonded to CH3 and an aliphatic carbon that is not double-bonded
 c
        if (r186 .and. audit_status(14) .and. al_eo.ge.1) then
-c         if (debugg) print *, 'screen: 14 methyl ether'
           do 800 i=1,n
              if (atsymb(i).ne.'O' .or. ncon(i).ne.2) goto 800
              call fc_envv(i,envi,3,list_i,2)
@@ -476,7 +428,6 @@ c
       endif
 c
 c cyclic benzyl thio-ester (aromatic env.) 
-c [cloned from previous test]
 c
       if (r186 .and. audit_status(142) .and. cyar.ge.1 .and. cyal.ge.1 .and. fatom.ge.2 .and. al_carb.ge.1. .and. al_s.ge.1) then
         if (debugg) print *, 'screen: 142 cyclic benzyl thio-ester (no SMARTS)'
@@ -534,7 +485,6 @@ c
           if (seen_cy(bzt_cy)) goto 1000
           seen_cy(bzt_cy) = .true.
           if (bzt_n.eq.1) then
-c         if (debugg) print *, 'screen: 41b benzyl tunneling'
           call outlin(cclass,ctype,' Benzyl tunneling (hetero)',' ',bz_tunnel)
           else
           call outlin(cclass,ctype,' Benzyl tunneling (nitro)',' ',bz_tunnel)
@@ -544,7 +494,6 @@ c         if (debugg) print *, 'screen: 41b benzyl tunneling'
       endif
 c
 c phenothiazines
-c  David H.  Sat Dec 28 04:54:28 PST 2013
 c
       if (r187 .and. audit_status(45) .and. cyar.ge.2 .and. cyal.ge.1 .and. fatom.ge.4 .and. al_s.ge.1 .and. al_n3.ge.1) then
          if (debugg) print *, 'screen: 45 phenothiazine'
@@ -559,10 +508,10 @@ c
          endif
       endif
 c
-c XXX phenothiazines XXX obsolete!
-c XXX DH 2001_11_07  XXX replaced by above SMARTS target
+c XXX phenothiazines XXX obsolete!  
+c replaced by SMARTS target code above
 c
-c     if (audit_status(45) .and. cyar.ge.2 .and. cyal.ge.1 .and. fatom.ge.4 .and. al_s.ge.1 .and. al_n3.ge.1) then
+c     if (audit_status(45)) then
 c        if (debugg) print *, 'screen: 45 phenothiazine'
 c        phen_s = 0
 c        phen_n = 0
@@ -584,14 +533,10 @@ c1010    continue
 c1011    continue
 c        if (phen_s .ne. 0) then
 c           do 1020 i=1,n
-c no-op?
 c              if (ncon(i).lt.2 .or. cmap(i).ne.1 .or. fmap(i).le.0) goto 1020
 c              if (atsymb(i).eq.'N' .and. hcount(i).eq.0) then
 c                 fstr = fsmile(fmap(i))
-c negligable improvement with this
-c                 if (audit_status(xxx)) then
-c                    if (fstr.ne.'aNa' .and. fstr.ne.'AN(a)a' .and. fstr(1:5).ne.'aN(a)') goto 1020
-c                 endif
+c                 if (fstr.ne.'aNa' .and. fstr.ne.'AN(a)a' .and. fstr(1:5).ne.'aN(a)') goto 1020
 c                 phen_n = cymemb(i,1)
 c                 goto 1021
 c           endif
@@ -605,7 +550,6 @@ c        endif
 c     endif
 c
 c SMARTS: tri-amide
-c DH 2009_01_14
 c
       if (r187 .and. audit_status(49) .and. al_amide.ge.1 .and. n.ge.18 .and. al_c.ge.6 .and. al_n3.ge.1 .and. al_o.ge.2 .and. cyar.ge.1) then
         if (debugg) print *, 'screen: 49 tri-amide di-ethyl+'
@@ -620,7 +564,6 @@ c
 c
 c SMARTS: purine nucleosides
 c separate corrections for -CH-OH on a ring, in a chain
-c DH 2009_01_14
 c
       if (r187 .and. audit_status(50) .and. cnn.ge.1 .and. ar_n.ge.3 .and. (ar_c+ar_n).ge.9 .and. fatom.ge.2 .and. 
      *      al_eo.ge.1 .and. al_o.ge.2 .and. cyar6.ge.1 .and. cyar5.ge.1) then
@@ -644,7 +587,6 @@ c
       endif
 c
 c SMARTS: lactone adjacent to fused ring
-c DH 2009_04_08
 c
       if (r187 .and. audit_status(51) .and. at_bz.ge.2 .and. fatom.ge.2 .and. al_eo.ge.1 .and. al_carb.ge.1 .and. cyar6.ge.1 .and. cyal6.ge.1) then
         if (debugg) print *, 'screen: 51 lactone/dibenzyl'
@@ -658,14 +600,12 @@ c
       endif
 c
 c SMARTS: cloxacillin/floxacillin (skip any carboxylic acids)
-c DH 2011_08_12
 c
       if (r187 .and. audit_status(53) .and. cyar.ge.1 .and. cy5.ge.1 .and. al_carb.ge.1 .and. ar_n.ge.1 .and. ar_o.ge.1. 
      *     .and. al_o.ge.3 .and. at_bz.ge.1) then
         if (debugg) print *, 'screen: 53a cloxacillin/floxacillin'
         if (debugv) print *, 'vectar:  53 O=C[c;R1][c;R1][C;H2]O A'
         vectar(0) = 'O=C[c;R1][c;R1][C;H2]O'
-c       vectar(0) = 'O=C[c;R1][c;R1][C;H2][O;H]'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
             if (debugg) print *, 'screen: 53b cloxacillin/floxacillin'
@@ -681,13 +621,11 @@ c           vectar(0) = 'O=C(O)[c;R1][c;R1][C;H2][O;H]'
  1100 continue
 c
 c SMARTS: Amide - n water bridge
-c DH 2012_02_20
 c
       if (r187 .and. audit_status(61) .and. ar_amide.ge.1 .and. cyar.ge.2 .and. fatom.ge.2 .and. ar_n.ge.1 .and. al_carb.ge.1 .and. al_n.ge.1.and. ar_c.ge.7) then
         if (debugg) print *, 'screen: 61b amide - n water bridge (apply correction)'
         if (debugv) print *, 'vectar:  61 [N;H1,H2;R0][C;R0](=O)[c;R1][c;R2][n;R1][c;R1]'
         vectar(0) = '[N;H1,H2;R0][C;R0](=O)[c;R1][c;R2][n;R1][c;R1]'
-c       vectar(0) = 'cn[c;R2][c;R1][C;R0](=O)[N;H1,H2]'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
            call outlin(cclass,'SMARTS',' Amide/nitrogen water bridge',' ',amide_nh)
@@ -696,8 +634,6 @@ c       vectar(0) = 'cn[c;R2][c;R1][C;R0](=O)[N;H1,H2]'
       endif
 c
 c SMARTS: Morpholine
-c DH 2012_08_22
-c DH 2013_03_04
 c  include MORPHOLINE itself (and a very few other compounds)
 c
       if (r187 .and. audit_status(118) .and. cyal.ge.1 .and. al_nr.ge.1 .and. al_or.ge.1 .and. cy6.ge.1) then
@@ -727,12 +663,11 @@ c
       endif
 c
 c SMARTS: benzo/naphtho-quinone with amine ring
-c DH 2012_09_08
 c
       if (r187 .and. audit_status(123) .and. al_carb.ge.2 .and. cyal6.ge.1 .and. al_n3.ge.1 .and. 
      *      ( db_ccr.ge.2 .or. (db_ccr.ge.1 .and. cyar.ge.1 .and. fatom.ge.2) ) ) then
         if (debugg) print *, 'screen: 123 benzo/naptho-quinone'
-        if (debugv) print *, 'vectar: 123 O=C1[C,c]~[C,c]C(=O)C=C1[N;H0;R1]'
+        if (debugv) print *, 'vectar: 123 O=C1[C,c]~[C,c]C(=O)C=C1[N;H0;R1]' 
         vectar(0) = 'O=C1[C,c]~[C,c]C(=O)C=C1[N;H0;R1]'
         call search( 0, 'UNIQUE', sok )
         if (nhits .ne. 0) then
@@ -742,7 +677,6 @@ c
       endif
 c
 c SMARTS: Aziridinyl on benzene
-c DH 2012_09_08
 c
       if (r187 .and. audit_status(124) .and. cy3.ge.1 .and. cyar6.ge.1 .and. al_n3.ge.1 .and. al_nr.ge.1) then
         if (debugg) print *, 'screen: 124 aziridnyl'
@@ -756,7 +690,6 @@ c
       endif
 c
 c SMARTS: 7-azaindole
-c DH 2012_11_02
 c
       if (r187 .and. audit_status(134) .and. cnn.gt.1 .and. fatom.ge.2 .and. ar_n.ge.2 .and. ar_c.ge.7 .and. cy5.ge.1 .and. cy6.ge.1) then
         if (debugg) print *, 'screen: 134 7-azaindole'
@@ -770,7 +703,6 @@ c
       endif
 c
 c SMARTS: n-C-CF3
-c DH 2012_11_02
 c
       if (r187 .and. audit_status(135) .and. at_cf3.ge.1. .and. cyar.ge.1 .and. ar_n.ge.1) then
         if (debugg) print *, 'screen: 135 methyl-CF3'
@@ -784,7 +716,6 @@ c
       endif
 c
 c SMARTS: 
-c DH 2013_01_28  oxazolidinone-peptide, C34H50N6O7 
 c
 c     if (0.eq.1) then
       if (r187 .and. audit_status(145) .and. n.ge.47 .and. cyal.ge.2 .and. cyar.ge.2) then
@@ -799,12 +730,9 @@ c     if (0.eq.1) then
       endif
 c
 c SMARTS: styrene
-c DH 2013_02_28 cyano sytrene
-c DH 2013_03_25 cinnamamide sytrene
 c
       if (r187 .and. (audit_status(146) .or. audit_status(150)) 
      *  .and. n.ge.11 .and. cyar.ge.1 .and. at_st.ge.1. .and. db_cc.ge.1) then
-c is this a styrene?
         if (debugg) print *, 'screen: 150 styrene test'
         if (debugv) print *, 'vectar: 150 cC=CC'
         vectar(0) = 'cC=CC'
@@ -843,7 +771,6 @@ c if styrene/cyano
               endif
            endif
 c styrene / cinnamamide
-c       elseif (r186 .and. audit_status(150) .and. al_amide.ge.1) then
         elseif (r186 .and. audit_status(150) .and. al_carb.ge.1 .and. al_n.ge.1) then
         if (debug) print *, 'Sty 3 '
         if (debugg) print *, 'screen: 150 styrene/cinnamamide'
@@ -851,7 +778,6 @@ c       elseif (r186 .and. audit_status(150) .and. al_amide.ge.1) then
            vectar(0) = 'c1ccccc1C=[C;R0]C(=O)N'
            call search( 0, 'ANYONE', sok )
            if (nhits .ne. 0) then
-c       if (debug) print *, 'Sty 4 '
               call outlin(cclass,'SMARTS',' Styrene (cinnamamide)',' ',styrene_cinn)
               dummy = total(styrene_cinn)
               goto 1200
@@ -860,7 +786,6 @@ c       if (debug) print *, 'Sty 4 '
               vectar(0) = 'C(=O)C(=Cc1ccco1)N(=O)=O'
               call search( 0, 'ANYONE', sok )
               if (nhits .ne. 0) then
-c       if (debug) print *, 'Sty 4 '
                  call outlin(cclass,'SMARTS',' Styrene (di-substituted)',' ',0.2+styrene_mono)
                  dummy = total(0.2+styrene_mono)
               endif
@@ -870,7 +795,6 @@ c       if (debug) print *, 'Sty 4 '
       endif
 c
 c SMARTS: piperazine/phenyl
-c DH 2013_03_13  exclude fused/extra rings
 c 
       if (r187 .and. audit_status(149) .and. piperazine .and. ar_cn.ge.1) then
         if (debugg) print *, 'screen: 149 piperazine/phenyl'
@@ -884,7 +808,6 @@ c
       endif
 c
 c SMARTS: Glucopyranoside
-c DH 2013_03_26 [OH] required to avoid multiple sugar units
 c 
       if (r187 .and. audit_status(151) .and. al_o.ge.4 .and. at_oh.ge.2 .and. ar_eo.ge.1 .and. al_or.ge.1) then
         if (debugg) print *, 'screen: 151 glucopyranoside'
@@ -898,7 +821,6 @@ c
       endif
 c
 c SMARTS: extended aromaticity
-c DH 2013_05_28 does not match anything in starlist
 c 
       if (r187 .and. audit_status(152) .and. ar_carb.ge.2 .and. ar_n.ge.2 .and. ar_nh.ge.1 .and. 0.ne.index(ssmile,'c(=C')) then
       if (debugg) print *, 'screen: 152 extended aromaticity'
@@ -912,7 +834,6 @@ c
       endif
 c
 c SMARTS: pyrazine ortho
-c DH 2013_09_11 
 c 
       if (.not.r187 .or. .not. audit_status(164) .or. .not.pyrazine) goto 1300
       if (debugg) print *, 'screen: 164 pyrazine ortho'
@@ -973,7 +894,6 @@ c
  1300 continue
 c
 c SMARTS: gambogic acid analogs
-c DH 2013_09_25 
 c
       if (r187 .and. audit_status(165) .and. ncycle.ge.5 .and. al_carb.ge.1 .and. db_ccr.ge.1 .and. al_eo.ge.1 .and. fatom.ge.2 .and. cyal.ge.4 .and. cyar.ge.1) then
         if (debugg) print *, 'screen: 165 gambogic acid'
@@ -986,41 +906,7 @@ c
         endif
       endif
 c
-c SMARTS: piperidines / para
-c [N;R0]C1(CCNCC1)[C;R0]=O # 46 / 31
-c [N;R1]C1(CCNCC1)[C;R0]=O # 6 / 1
-c [N;R1]C1(CCNCC1)[C;R1]=O # 54 / 2 
-c DH 2013_11_12 
-c David H.  Thu Sep 11 13:10:10 PDT 2014
-c  R6956
-c David H. really benefits only R6956, disabled (Spring 2015)
-c
-c     if (audit_status(166) .and. piperidine .and. nfrag.ge.3 .and. al_n.ge.2 .and. al_carb.ge.1) then
-c       if (debugg) print *, 'screen: 166 piperidine/open'
-c       if (debugv) print *, 'vectar: 166 [N;R0]C1(CCNCC1)[C;R0]=O'
-c       vectar(0) = '[N;R0]C1(CCNCC1)[C;R0]=O'
-c       call search( 0, 'ANYONE', sok )
-c       if (nhits .ne. 0) then
-c          call outlin(cclass,'SMARTS',' Piperidine boat conformer (para/open)',' ',piper_para)
-c          dummy = total(piper_para)
-c          goto 1400
-c       endif
-c     endif
-c     if (audit_status(167) .and. piperidine .and. cyal.ge.2 .and. nfrag.ge.3 .and. al_n.ge.2 .and. al_carb.ge.1) then
-c       if (debugg) print *, 'screen: 167 piperidine/ring'
-c       if (debugv) print *, 'vectar: 167 [N;R1]C1(CCNCC1)[C;R1]=O'
-c       vectar(0) = '[N;R1]C1(CCNCC1)[C;R1]=O'
-c       call search( 0, 'ANYONE', sok )
-c       if (nhits .ne. 0) then
-c          call outlin(cclass,'SMARTS',' Piperidine boat conformer (para/ring)',' ',piper_para/2)
-c          dummy = total(piper_para/2)
-cX         goto 1400
-c       endif
-c     endif
-c1400 continue
-c
 c SMARTS: crown ethers
-c DH 2013_12_11 
 c
       if (r187 .and. audit_status(169) .and. cymax.ge.12) then
         if (debugg) print *, 'screen: 169 crown ethers'
@@ -1044,7 +930,6 @@ c
       endif
 c
 c SMARTS: Di-aryl amide, di-ortho halogen
-c DH 2014_03_22
 c
       if (r187 .and. audit_status(172) .and. ar_amide.ge.1 .and. (at_cl+at_f).ge.2 .and. cyar6.ge.2 .and. ar_n.ge.1) then
         if (debugg) print *, 'screen: 172 R7090'
@@ -1058,7 +943,6 @@ c
       endif
 c
 c SMARTS: Atropisomers (counter one 'hetero-aromatic extension' due to ortho twist [cf R7137])
-c DH 2014_04_25 does not match anything in starlist
 c
       if (r187 .and. audit_status(173) .and. ar_n.ge.3 .and. cyar6.ge.2 .and. cyar5.ge.1 .and. arar .and. 0.ne.index(ssmile,'nn')) then
         if (debugg) print *, 'screen: 173 R7137'
@@ -1072,12 +956,10 @@ c
       endif
 c
 c SMARTS: Methaqualone analogs
-c DH 2014_05_12 only two matches in starlist, barely any benefit
 c
       if (r187 .and. audit_status(174) .and. cyar.ge.3 .and. cy6.ge.3 .and. ar_carb.ge.1 .and. ar_n.ge.1 .and. fatom.ge.2 .and. (at_cl.ge.1 .or. at_bz.ge.1)) then
         if (debugg) print *, 'screen: 174 methaqualone analogs'
         if (debugv) print *, 'vectar: 174 [C,Cl;R0]c1ccccc1[n;R1]3c[c,n]ccc3=O'
-c       print *, ssmile(1:78)
         vectar(0) = '[C,Cl;R0]c1ccccc1[n;R1]3c[c,n]ccc3=O'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
@@ -1087,7 +969,6 @@ c       print *, ssmile(1:78)
       endif
 c
 c SMARTS: Nitrogen bridge across two 5-rings
-c DH 2014_06_16 does not match anything in starlist
 c
       if (r187 .and. audit_status(176) .and. al_n.ge.2 .and. cyal5.ge.2 .and. fatom.ge.2) then
         if (debugg) print *, 'screen: 176 nitrogen bridge across two 5-rings'
@@ -1101,7 +982,6 @@ c
       endif
 c
 c SMARTS: Iodide ortho to in-ring nitrogen (on 6-ring)
-c DH 2014_07_24 
 c
       if (r187 .and. audit_status(178) .and. ar_n.ge.1 .and. cy6.ge.1 .and. 0.ne.index(ssmile,'I')) then
         if (debugg) print *, 'screen: 178 iodide ortho to in-ring nitrogen (on 6-ring)'
@@ -1115,7 +995,6 @@ c
       endif
 c
 c SMARTS: R7447 scaffold needs YCCCY, but use this instead
-c DH 2014_11_04 
 c
       if (r187 .and. audit_status(180) .and. al_eo.ge.1 .and. cyal6.ge.1 .and. al_amide.ge.1. and. al_n.ge.3 
      *   .and. 0.ne.index(ssmile,'C#N') ) then
@@ -1131,7 +1010,6 @@ c
 
 c
 c SMARTS: R7583 with pyrrolidine-phenyl ortho twist
-c DH 2015_04_04 
 c
       if (r187 .and. audit_status(182) .and. pyrazole .and. arar .and. cyar6.ge.1 .and. cyar5.ge.1) then
         if (at_bz.ge.1 .and. ch3.ge.1) then
@@ -1160,22 +1038,17 @@ c
 
 c
 c SMARTS: R7592 multiple meth-oxy
-c DH 2015_04 _17 
-c DH 2016_02 _03  does very poorly:
 c   Better:    24     gain     6.53   avg gain  0.27
 c   Worse:    125     loss    64.16   avg loss  0.51
 c   Totals:   149      net   -57.63
 c
 c     if (r187 .and. audit_status(xxx) .and. ch3.ge.2 .and. cy6.ge.1 .and. cyar.ge.1 .and. 
 c    *     (0.ne.index(ssmile,'COc') .or. 0.ne.index(ssmile,'c(OC)')) ) then
-c       if (debugg) print *, 'screen: xxx'
-c       if (debugv) print *, 'vectar: xxx c1(O[C;H3])c(O[C;H3])cccc1 A'
 c       vectar(0) = 'c1(O[C;H3])c(O[C;H3])cccc1'
 c       call search( 0, 'ANYONE', sok )
 c       if (nhits .ne. 0) then
 c          call outlin(cclass,'SMARTS',' Meth-oxy pair',' ',-.55)
 c          dummy = total(-.55)
-c          if (debugv) print *, 'vectar: xxx c1(O[C;H3])c(O[C;H3])c(O[C;H3])ccc1 B'
 c          vectar(0) = 'c1(O[C;H3])c(O[C;H3])c(O[C;H3])ccc1'
 c          call search( 0, 'ANYONE', sok )
 c          if (nhits .ne. 0) then
@@ -1187,7 +1060,6 @@ c     endif
 
 c
 c SMARTS: ortho-phenols
-c DH 2015_05_24 base correction is +0.60, but have to offset -0.30 ortho, so net +0.90
 c
       if (r187 .and. audit_status(99) .and. arar .and. at_oh.ge.1 .and. ar_o.ge.1 .and. cyar5.ge.1 .and. cyar6.ge.1) then 
         if (debugg) print *, 'screen: 99 ortho-phenols'
@@ -1202,7 +1074,6 @@ c
 
 c
 c SMARTS: CF3 on diazo-oxy
-c DH 2015_05_26
 c
       if (r187 .and. audit_status(107) .and. at_f.ge.3 .and. ar_o.ge.1 .and. cy5.ge.1) then 
         if (debugg) print *, 'screen: 107 CF3 on diazo-oxy'
@@ -1217,7 +1088,6 @@ c
 
 c
 c SMARTS: Podophyllotoxins : TOPOsides
-c DH 2015_06_02
 c
       if (r187 .and. audit_status(108) .and. ncycle.ge.4 .and. cyal.ge.3 .and. al_or.ge.3 .and. cy5.ge.2 .and. cy6.ge.2 .and. cyar.ge.1) then 
         if (debugg) print *, 'screen: 108 podophyllotoxins'
@@ -1232,7 +1102,6 @@ c
 
 c
 c SMARTS: di-methoxy offsetting correction
-c DH 2015_06_03
 c
       if (r187 .and. audit_status(109) .and. ar_eo.ge.2 .and. ch3.ge.2) then 
         if (debugg) print *, 'screen: 109 di-methoxy'
@@ -1247,7 +1116,6 @@ c
 
 c
 c SMARTS: tri-methoxy offsetting correction
-c DH 2015_06_03
 c
       if (r187 .and. audit_status(109) .and. ar_eo.ge.3 .and. ch3.ge.3) then 
         if (debugg) print *, 'screen: 109 tri-methoxy'
@@ -1262,7 +1130,6 @@ c
 
 c
 c SMARTS: Quat-carbon with hydroxy, in di-hetero ring environment
-c DH 2015_07_19
 c
       if (r187 .and. audit_status(136) .and. ar_s.ge.2 .and. cyar.ge.2) then 
         if (debugg) print *, 'screen: 136 quat-carbon'
@@ -1276,7 +1143,6 @@ c
       endif
 c
 c SMARTS: para-hydroxy piperidine
-c DH 2015_08_02
 c
       if (r187 .and. audit_status(153) .and. piperidine .and. at_oh.ge.1 .and. nfrag.ge.2) then
         if (debugg) print *, 'screen: 153 para-hydroxy piperidine'
@@ -1290,7 +1156,6 @@ c
       endif
 c
 c SMARTS: conjugated triple bonds
-c DH 2015_08_14
 c
       if (r187 .and. audit_status(155) .and. 0.ne.index(ssmile,'C#CC#CC#C')) then
         if (debugg) print *, 'screen: 155 conjugated triple bonds'
@@ -1304,7 +1169,6 @@ c
       endif
 c
 c SMARTS: Scaffold: offset CF3 Y-X proximity in multi-Y case
-c DH 2015_09_27 need '5' fragments as each 'F' counts as 1
 c
       if (r187 .and. audit_status(166) .and. at_cf3.ge.1 .and. nfrag.ge.5) then
         if (debugg) print *, 'screen: 166 CF3 multi-Y offset'
@@ -1318,7 +1182,6 @@ c
       endif
 c
 c SMARTS: Scaffold: Sulfonyl benzyl to hetero ring
-c DH 2015_11_03 
 c
       if (r187 .and. audit_status(184) .and. nfrag.ge.3 .and. at_bz.ge.1 .and. ch3.ge.1 .and. s184.ge.1) then
         if (debugg) print *, 'screen: 184 Sulfonyl benzyl to hetero ring'
@@ -1332,7 +1195,6 @@ c
       endif
 c
 c SMARTS: Scaffold: Amide on indole
-c DH 2015_11_18 
 c
       if (r187 .and. audit_status(189) .and. ar_amide.ge.1 .and. ar_nh.ge.1 .and. fatom.ge.2 .and. cyar6.ge.1 .and. cyar6.ge.1) then
         if (debugg) print *, 'screen: 189 Amide on indole'
@@ -1346,7 +1208,6 @@ c
       endif
 c
 c SMARTS: Scaffold: R7949
-c DH 2016_06_27
 c
       if (r187 .and. audit_status(190) .and. cy5.ge.2 .and. ar_o.ge.1 .and. ar_n.ge.1 .and. cyal.ge.1) then
         if (debugg) print *, 'screen: 190 R7949'
@@ -1360,7 +1221,6 @@ c
       endif
 c
 c SMARTS: Scaffold: R7962 hydrate
-c DH 2016_08_02 
 c
       if (r187 .and. audit_status(191) .and. 0.ne.index(ssmile,'C#N') .and. cy6.ge.2 .and. ar_n.ge.2) then
         if (debugg) print *, 'screen: 191 R7962'
@@ -1374,7 +1234,6 @@ c
       endif
 c
 c SMARTS: Scaffold: R7581 H-bond potential
-c DH 2017_05_18
 c
       if (r187 .and. audit_status(194) .and. cyar5.ge.1 .and. ar_s.ge.1 .and. ar_n.ge.1) then
         if (debugg) print *, 'screen: 194 R7581'
@@ -1388,14 +1247,11 @@ c
       endif
 c
 c SMARTS: Scaffold: R8118 H-bond potential
-c DH 2017_09_01 filtering for C=O, but not part of SMARTS target
 c
       if (r187 .and. audit_status(195) .and. cyar5.ge.1 .and. ar_n.ge.1 .and. ar_o.ge.1 .and. al_carb.ge.1 .and. al_o.ge.1 .and. al_n.ge.1) then
         if (debugg) print *, 'screen: 195 R8118'
         if (debugv) print *, 'vectar: 195 onc([O;H])c[C;H2][C;H1][N;H2]'
         vectar(0) = 'onc([O;H])c[C;H2][C;H1][N;H2]'
-C       if (debugv) print *, 'vectar: 195 [N;H2][C;H1][C;H2]c1c([O;H])[c,n,o][c,n,o][c,n,o]1'
-C       vectar(0) = '[N;H2][C;H1][C;H2]cc([O;H])no'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
               call outlin(cclass,'SMARTS',' R8118 H-bond potential',' ',1.00)
@@ -1404,7 +1260,6 @@ C       vectar(0) = '[N;H2][C;H1][C;H2]cc([O;H])no'
       endif
 c
 c SMARTS: Scaffold: 1,3,4 oxadiazole - phenyl
-c DH 2017_11_02 
 c
       if (r187 .and. audit_status(198) .and. cyar5.ge.1 .and. cyar6.ge.1 .and. ar_n.ge.2 .and. ar_o.ge.1) then
         if (debugg) print *, 'screen: 198 1,3,4 oxadiazole - phenyl'
@@ -1418,7 +1273,6 @@ c
       endif
 c
 c SMARTS: Scaffold: oxazole
-c DH 2017_11_03
 c
       if (r187 .and. audit_status(199) .and. cyar5.ge.1 .and. ar_n.ge.1 .and. ar_o.ge.1) then
         if (debugg) print *, 'screen: 199 oxazole'
@@ -1432,7 +1286,6 @@ c
       endif
 c
 c SMARTS: Scaffold: ethers ortho to amide
-c DH 2017_11_10
 c
       if (r187 .and. audit_status(200) .and. ar_eo.ge.2 .and. cyar6.ge.1 .and. al_o.ge.3 .and. al_n.ge.1) then
         if (debugg) print *, 'screen: 200 ethers ortho to amide'
@@ -1446,7 +1299,6 @@ c
       endif
 c
 c SMARTS: Scaffold: methyoxy ortho pair on benzoquinone 
-c DH 2017_11_30
 c
       if (r187 .and. audit_status(201) .and. al_eo.ge.2 .and. al_carb.ge.2 .and. cyal6.ge.1 .and. db_ccr.ge.2) then
         if (debugg) print *, 'screen: 201 benzoquinone methyoxy ortho pair'
@@ -1472,11 +1324,8 @@ c
 
 c
 c SMARTS: vinyl conjugation
-c DH 2015_08_14
 c
-c     if (r187 .and. audit_status(159) .and. 0.ne.index(ssmile,'C=C')) then
-c       if (debugg) print *, 'screen: 155 vinyl conjugation'
-c       if (debugv) print *, 'vectar: 155 O=C[C;H1]=[C;R0;H1]c1ccccc1'
+c     if (r187 .and. audit_status(xx) .and. 0.ne.index(ssmile,'C=C')) then
 c       vectar(0) = 'O=C[C;H1]=[C;R0;H1]c1ccccc1'
 c       call search( 0, 'ANYONE', sok )
 c       if (nhits .ne. 0) then
@@ -1487,7 +1336,6 @@ c     endif
 
 c
 c SMARTS: allow H-bond between SOH and amine
-c DH 2014_11_28 hurts the only starlist compound that matches
 c
 c     if (audit_status(xx) .and. cyar.ge.1 .and. 0.ne.index(ssmile,'N') .and. 0.ne.index(ssmile,'S')) then
 c       vectar(0) = 'S([O;H])cc[N;H2]'
@@ -1500,14 +1348,13 @@ c       endif
 c     endif
 
 c
-c SMARTS: extra benzyl test
-c DH 2012_10_09  fewer ring spec. to handle proline
+c SMARTS: extra benzyl
 c
 c     if (audit_status(xxx)) then
 c       vectar(0) = 'c1cccc([O,N])c1[C;R0](C)(C)'
 c       call search( 0, 'ANYONE', sok )
 c       if (nhits .ne. 0) then
-c           call outlin(cclass,'SMARTS',' test extra benzyl',' ',-0.10)
+c           call outlin(cclass,'SMARTS',' extra benzyl',' ',-0.10)
 c           dummy = total(-0.10)
 c        endif
 c     endif
@@ -1518,7 +1365,6 @@ c Tests that follow are just warnings
 c=================================================================================
 c
 c SMARTS: erythromycin
-c DH 2011_08_12
 c
       if (r187 .and. audit_status(52) .and. cyal.ge.3 .and. cymax.ge.14) then
         if (debugg) print *, 'screen: 52 erythromycin warning'
@@ -1530,15 +1376,12 @@ c
             dummy = total(0.015)
          endif
       endif
+c
 c SMARTS: polypeptide warning
-c David H.  Fri Sep 27 14:19:09 PDT 2013
-c  appears to be spurious in most cases
 c
       if (r187 .and. audit_status(120) .and. n.ge.18 .and. al_amide.ge.3) then
-c     if (audit_status(120) .and. n.ge.18 .and. 0.ne.index(ssmile,'NC(=O)')) then
         if (debugg) print *, 'screen: 120 pp flexible warning'
         vectar(0) = 'NC[C;R0](=O)NC[C;R0](=O)NC[C;R0](=O)'
-c       vectar(0) = '[N;R0][C;R0][C;R0](=O)[N;R0][C;R0][C;R0](=O)[N;R0][C;R0][C;R0](=O)'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
             call outlin(cclass,'SMARTS',' Polypeptides unpredictable (flexible)','Warning',0.015)
@@ -1551,7 +1394,6 @@ c
       if (r187 .and. audit_status(121) .and. cyal.ge.1. .and. cymax.gt.14) then
         if (debugg) print *, 'screen: 121 macrocycle warning'
         vectar(0) = 'NC[C;R1](=O)NC[C;R1](=O)NC[C;R1](=O)NC[C;R1](=O)'
-c       vectar(0) = '[N;R1][C;R1][C;R1](=O)[N;R1][C;R1][C;R1](=O)[N;R1][C;R1][C;R1](=O)[N;R1][C;R1][C;R1](=O)'
         call search( 0, 'ANYONE', sok )
         if (nhits .ne. 0) then
             call outlin(cclass,'SMARTS',' Peptide macrocycles unpredictable','Warning',0.015)
@@ -1579,19 +1421,6 @@ c
       endif
 
 c
-c SMARTS: polypeptide/macrocycle warning
-c
-c     if (audit_status(xxx) .and. .not. pep_cor) then
-c       vectar(0) = '[N;R0]CC(=O)[N;R0]CC(=O)[N;R0]CC=O'
-c       vectar(0) = 'C[C;R0](=O)NC[C;R0](=O)NC[C;R0]=O'
-c       vectar(0) = 'C[N;R0]CC(=O)NCC(=O)[N;R0]CC(=O)'
-c       call search( 0, 'ANYONE', sok )
-c       if (nhits .ne. 0) then
-c           call outlin(cclass,'SMARTS',' Peptide (generic) ',' ',peptide)
-c           dummy = total(peptide)
-c        endif
-c     endif
-c
 c warn of very low/high estimated values (error levels 51 and 52)
 c
       dummy = total( 0.0 )
@@ -1615,66 +1444,14 @@ c
          iflag = 51
          if (warn) then
             call outlin(cclass,ctype,' Value > 8 not applicable in modeling','Warning',0.0)
-c           call outlin(cclass,ctype,' Very high value unrealistic in nature',' ',0.0)
          endif
       endif
       if (dummy .lt. -3.5 ) then
          iflag = 52
          if (warn) then
             call outlin(cclass,ctype,' Value < -3.5 not applicable in modeling','Warning',0.0)
-c           call outlin(cclass,ctype,' Very low value unrealistic in nature',' ',0.0)
          endif
       endif
 c
       return
       end
-c
-c SMARTS: xxx
-c DH 2013_09_13  xxx
-c
-c     if (audit_status(xxx) .and. cyar.ge.1) then
-c       vectar(0) = 'c([O;H])cC[N;R0]C(=O)'
-c       vectar(0) = 'c(O)cCNC=O'
-c       call search( 0, 'ANYONE', sok )
-c       if (nhits .ne. 0) then
-c           call outlin(cclass,'SMARTS',' H-bond via benzyl',' ',0.23)
-c           dummy = total(0.23)
-c        endif
-c     endif
-c
-c
-c VERY OLD CODE, NOW OBSOLETE
-c
-c ERR 56:  Anomalous bases
-c check for anomalous bases such as strychnine, morphine
-c
-c     if (ncycle.ge.3 .and. cyal.ge.2) then
-c        lflag1 = .false.
-c        lflag2 = .false.
-c        do XXX i=1,n
-c           if ( .not.aromat(i) .and. cmap(i).gt.0
-c    *                 .and. atnumb(i).ne.6) lflag1 = .true.
-c           if ( cmap(i).ge.3 )        lflag2 = .true.
-cXXX     continue
-c        if (lflag1 .and. lflag2) then
-c           iflag = 56
-c           if (warn) then
-c              cvar40 = 'Possibly underpredicted alkaloid'
-c              call outlin(cclass,ctype,cvar40,' ',0.0)
-c           endif
-c        endif
-c     endif
-c
-c ERR 57:  check for charged structures.
-c
-c     do 700 i=1,n
-c        if (charge(i).ne.0) then
-c           iflag = 57
-c           if (warn) then
-c              cvar40 = ' Error uncertain for charged structure'
-c              call outlin(cclass,ctype,cvar40,' ',0.0)
-c              go to 702
-c           endif
-c        endif
-c700  continue
-c702  continue
