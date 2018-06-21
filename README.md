@@ -1,7 +1,7 @@
-## SMARTS is like a regular expression for chemical structures
+## SMARTS is like a regular expression for chemical compounds
 
 SMARTS is a tool for structure searching, the process of finding a particular pattern
-(a *subgraph*) in a molecule (a *graph*). Sub- (and super-) structure searches are
+(a *subgraph*) in a molecule (a *graph*). Structural searches are
 used in virtually every computer-based chemistry application.
 
 ### Defining the terms
@@ -18,13 +18,18 @@ of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
 
 * C(c)(c)C([Br,Cl,F])([Br,Cl,F])([Br,Cl,F])
 
-Inspired by UNIX implementation of the mathematical idea of regular expressions, 
-SMART can be viewed as a domain-specific language for chemical compounds. An overview
-of the syntax can be in the [SMARTS summary cheat-sheet](./cheat-sheet.txt)
+Inspired by UNIX implementation of the mathematical concept of regular expressions, 
+SMARTS can be viewed as a domain-specific grammar for chemical compounds, combining 
+the functions of traversing a graph and matching a pattern.
+An overview of the syntax can be in the [SMARTS summary](./cheat-sheet.txt)
+
+### Scaffold dictionary
+
+nearly [700 SMARTS targets](./scaffold-dictionary.txt)
 
 ### Scaffold screens
 
-A good example of the utility of SMARTS is shown by the scaffold screening code in this 
+Another good example of the utility of SMARTS is shown by the scaffold screening code in this 
 project [screen.for](./screen.for)
 
 The scaffold screens consist of a mixture of custom code and SMARTS targets. The trade-off
