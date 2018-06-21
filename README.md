@@ -18,14 +18,14 @@ of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
 
 * C(c)(c)C([Br,Cl,F])([Br,Cl,F])([Br,Cl,F])
 
-Inspired by UNIX implementation of the mathematical idea of regular expressions, o
-
-[SMARTS syntax summary] (cheat-sheet.txt)
+Inspired by UNIX implementation of the mathematical idea of regular expressions, 
+SMART can be viewed as a domain-specific language for chemical compounds. An overview
+of the syntax can be in the [SMARTS summary cheat-sheet](./cheat-sheet.txt)
 
 ### Scaffold screens
 
 A good example of the utility of SMARTS is shown by the scaffold screening code in this 
-project ('screen.for')
+project [screen.for](./screen.for)
 
 The scaffold screens consist of a mixture of custom code and SMARTS targets. The trade-off
 is that while SMARTS targets are relatively easy to write, they are slow at runtime. Custom
