@@ -20,11 +20,12 @@ A SMILES defines a specific chemical compound, here the pesticide DDT:
 *  Clc1ccc(cc1)C(c2ccc(Cl)cc2)C(Cl)(Cl)Cl
 
 A SMARTS is an expression that looks for a match of a particular arrangement 
-of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
+of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens 
+(bromine, chlorine, flourine):
 
 * C(c)(c)C([Br,Cl,F])([Br,Cl,F])([Br,Cl,F])
 
-This matches DDT, but three other compounds:
+This matches DDT, but also three other compounds:
 
 * 2,2-DIPHENYL-1,1,1-TRICHLOROETHANE
 * 1,1,1-TRIFLUORO-2,2-DI(P-METHOXYPHENYL)ETHANE
@@ -40,8 +41,8 @@ to develop a standard library for re-use. Here is a compendium of nearly
 
 ### Scaffold screens
 
-Another good example of the utility of SMARTS is shown by the scaffold screening code in this 
-project [screen.for](./screen.for)
+Another good example of the utility of SMARTS is shown by the scaffold screening Fortran code in
+[screen.for](./screen.for)
 
 The scaffold screens consist of a mixture of custom code and SMARTS targets. The trade-off
 is that while SMARTS targets are relatively easy to write, they are slow at runtime. Custom
