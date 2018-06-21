@@ -1,21 +1,28 @@
-# SMARTS is like a regular expression for chemical structures
+## SMARTS is like a regular expression for chemical structures
 
 SMARTS is a tool for structure searching, the process of finding a particular pattern
 (a *subgraph*) in a molecule (a *graph*). Sub- (and super-) structure searches are
 used in virtually every computer-based chemistry application.
 
-## Defining the terms
+### Defining the terms
 
 * SMILES = __S__ implified __M__ olecular __I__ nput __L__ ine __E__ diting __S__ pecification
-
 * SMARTS = __SM__ ILES __Ar__ bitrary __T__ arget __S__ pecification
 
-A SMILES defines a specific chemical compound.  A SMARTS is an expression that looks 
-for a match of a particular arrangement of atoms/bonds in that compound.
+A SMILES defines a specific chemical compound, here the pesticide DDT:  
 
-Inspired by xxx
+*  Clc1ccc(cc1)C(c2ccc(Cl)cc2)C(Cl)(Cl)Cl
 
-## Scaffold screens
+A SMARTS is an expression that looks for a match of a particular arrangement 
+of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
+
+* C(c)(c)C([Br,Cl,F])([Br,Cl,F])([Br,Cl,F])
+
+Inspired by UNIX implementation of the mathematical idea of regular expressions, o
+
+[SMARTS syntax summary] (cheat-sheet.txt)
+
+### Scaffold screens
 
 A good example of the utility of SMARTS is shown by the scaffold screening code in this 
 project ('screen.for')
