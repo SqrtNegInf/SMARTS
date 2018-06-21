@@ -1,0 +1,2960 @@
+#---------------------------------------------------------------------------------
+#
+# Scaffold dictionary
+#
+# format is three lines:
+# 1 title
+# 2 SMILES/SMARTS target (may contain logical joins 'or', 'and' [but not both])
+# 3 SMILES for depiction (complete, or with wild-cards; disconnections OK)
+#
+#---------------------------------------------------------------------------------
+
+Acche reactivators (Sarin-type antidotes)
+*[n+]1c(C=NO)n(*)cc1
+*[n+]1c(C=NO)n(*)cc1
+
+Acetylcholine analogs (spasmolytics)
+*C(=O)OCC[N+](*)(*)*
+*C(=O)OCC[N+](*)(*)*
+
+Acetylenes
+C#C
+*C#C*
+
+Acid hydrazides (unsubst.)
+[N;H2][N;H]C(=O){C}
+NNC(=O)*
+
+Acid hydrazides (N2-subst)
+{C}[C;R0](=O)[N;H;R0][N;H;R0]{C}
+*C(=O)NN*
+
+Acridine
+# [c;R1]3[c;R1]c[c;R2]2[n+0;R1;H0][c;R]1[c;R1][c;R1][c;R1][c;R1]c1[$([c;R1]);!$(c=*)]c2[c;R1]3
+[c;R1]3[c;R1]c[c;R2]2[n+0;R1;H0][c;R]1[c;R1][c;R1][c;R1][c;R1]c1{c2}c2[c;R1]3
+n1c2ccccc2cc3ccccc13
+
+Acridine,9-anilino (anti-neoplastics)
+c1ccccc1Nc2c3ccccc3nc4ccccc24
+c1ccccc1Nc2c3ccccc3nc4ccccc24
+
+Acridine,3,6-diamino (proflavine analogs)
+[N;R0]c1cc2[n+0]c3cc([N;R0])ccc3cc2cc1
+*Nc1cc2nc3cc(N*)ccc3cc2cc1
+
+9,10-Acridone
+[nH]1c2ccccc2c(=O)c3ccccc13
+[nH]1c2ccccc2c(=O)c3ccccc13
+
+Acrylamides (N-Subst.)
+[$([C;H2]),$([C;H1]({C}));$([C;H1][!a])]=[C;H1;R0]C(=O)[N;H1;R0]{C}
+*C=CC(=O)N*
+# gave up on trying to be restrictive:
+# [$([C;H2]),$([C;H1]({C})),$([C;H0]({C})({C}))]=[C;H1;R0]C(=O)[N;H1;R0]{C}
+
+Acrylamides (NH2)
+{C}[C;H1]=[C;H1]C(=O)[N;H2]
+*C=CC(=O)N
+#[$([C;H2]),$([C;H1]({C}));$([C;H1][!a])]=[C;H1;R0]C(=O)[N;H1;R0]{C}
+
+Acrylic esters
+{C}C(=[C;H2])C(=O)O{C}
+*C(=C)C(=O)O*
+
+Acyl-ureas (NH2; sedatives)
+[N;H2][C;R0](=O)[N;H1;R0][C;R0](=O)*
+NC(=O)NC(=O)*
+
+Acyl-ureas (NH-)
+{C}C(=O)[N;H1]C(=O)[N;H1]{C} or [C;r5](=O)[N;H1;r5][C;r5](=O)[N;H1;r5]
+*C(=O)NC(=O)N*
+
+Adamantane
+C1C2CC3CC1CC(C2)C3
+*C12CC3CC(C1)CC(C2)C3
+
+Adenine (9H)
+# [$([n;H0;X2]),$([nH])]1[$([c;R1]);!$(c=*)][$([n;H0;X2]),$([nH])]c2c([N+0])[$([n;R1]);!$(n=*)][$([c;R1]);!$(c=*)][n;R1]c12
+{n3}1{c2}{n3}c2c([N+0])[$([n;R1]);!$(n=*)]{c2}[n;R1]c12
+[nH]1cnc2c(N*)ncnc12
+
+Adenine (6N,9-disubs)
+# *[n;H0]1[$([c;R1]);!$(c=*)][n;H0;R1]c2c(N*)[n;R1][$([c;R1]);!$(c=*)][n;R1]c12
+*[n;H0]1{c2}[n;H0;R1]c2c(N*)[n;R1]{c2}[n;R1]c12
+*n1c2ncnc(N*)c2nc1
+
+Adenine (9-subs)
+# *[n;H0]1[$([c;R1]);!$(c=*)][n;R1]c2c([NH2])[n;R1][$([c;R1]);!$(c=*)][n;R1]c12
+*[n;H0]1{c2}[n;R1]c2c([NH2])[n;R1]{c2}[n;R1]c12
+*n1cnc2c(N)ncnc12
+
+Adenosine (6-NH2)
+O1CCCC1n1cnc2c([N;H2])n[$([c;R1]);!$(c=*)]nc12
+O1CCCC1n1cnc2c(N)ncnc12
+
+Adenosine,6-subst.
+[N;H1]c1ncnc2n(cnc12)C1O[C;R1][C;R1][C;R1]1
+*Nc1ncnc2n(cnc12)C1OC(*)C(*)C1*
+
+Adriamycin (doxorubicin)
+CC(=O)C1Cc2cc3C(=O)c4ccccc4C(=O)c3c(O)c2CC1
+CC(=O)C1Cc2cc3C(=O)c4ccccc4C(=O)c3c(O)c2CC1
+
+Alanylprolinamide
+CC([N;H2])C(=O)[N;R1]1CCCC1C(=O)[N;H1]
+CC([NH2])C(=O)N1CCCC1C(=O)[NH]
+
+Alkenes (conjugated)
+{C}=[CH;R0][CH;R0]={C}
+*C=CC=C*
+
+Alkynols (alpha or beta)
+C#C[$([OH]),$([C;R0][OH])&!$(C=O)]
+*C#CC(O)*.*C#CO
+
+Allopurinol analogs
+# [n;H0,H1]1c(=O)c2cn[n;H0,H1]c2[n;H0,H1][$([c;R1]);!$(c=*)]1
+[n;H0,H1]1c(=O)c2cn[n;H0,H1]c2[n;H0,H1]{c2}1
+[nH]1c(=O)c2cnn(*)c2nc1* 
+
+Alloxans
+*N1C(=O)C(=O)C(=O)[NH]C1=O
+*N1C(=O)C(=O)C(=O)NC1=O
+
+Amide,alpha-hydroxy,alpha-subst.
+*C([OH])(*)C(=O)[N;R0]*
+*C(O)(*)C(=O)N*
+
+Amidino
+{C}[C;R0](=[N;H;R0])[N;H;R0]{C}
+*C(=N)N
+
+Amiloride analogs
+*c1nc(N)c(C(=O)NC(N)=N)nc1*
+*c1nc(N)c(C(=O)NC(N)=N)nc1*
+
+Amino Acid (alpha)
+*C([N;H2])C(=O)[OH]
+*C(N)C(=O)O
+
+Amino-glycoside (antibiotics)
+[O;R0][C;R1;r6][O;R1;r6][$(C([N;R0;H1,H2])CC[C;R1;r6]),$(CC([N;R0;H1,H2])C[C;R1;r6]),$(CCC([N;R0;H1,H2])[C;R1;r6]),$(CCC[C;R1,r6][N;R0;H1,H2])]
+*OC1OCCC(N*)C1 
+
+Amphetamines
+[C;H3][C;H]([N;H2])[C;H2]c1ccccc1
+NC(C)Cc1ccccc1
+
+Amphotericin analogs
+*OC1CC2CCCC(O2)CCCCCCCCCCCC(=O)OCCCCC=CC=CC=CC=CC=CC=CC=C1
+*OC1CC2CCCC(O2)CCCCCCCCCCCC(=O)OCCCCC=CC=CC=CC=CC=CC=CC=C1
+
+Anthracycline antibiotics (adriamycins & rubicins)
+*CC4CCc3cc2C(=O)c1ccccc1C(=O)c2cc3C4
+*C(=O)C1=CCC2CC3CC4CCCCC4C(=O)C3=CC2C1=O
+
+Angiotensin II pharmacophore (biphenyl-tetrazoles)
+*Cc1ccc(cc1)c2ccccc2c3nnn[nH]3
+*Cc1ccc(cc1)c2ccccc2c3nnn[nH]3 
+
+Anisole-2-cyclopentoxy
+[C;R1]1[C;R1][C;R1][C;R1][C;R1]1O[c;R1]1[c;R1](OC)[c;R1][c;R1][c;R1][c;R1]1
+C1CCCC1Oc1c(OC)cccc1
+
+Anthraquinone (anthracene-9,10-dione)
+c1c2C(=O)c3c[c;R1][c;R1][c;R1]c3C(=O)c2[c;R1][c;R1][c;R1]1
+c1c2C(=O)c3ccccc3C(=O)c2ccc1 
+
+Anthraquinone,1,4-dihydroxy (intercalating anti-neoplastics)
+[OH]c2[c;D2][c;D2]c([OH])c3C(=O)c1[c;D2,D3][c;D2][c;D2][c;D2,D3]c1C(=O)c23
+*c1c2c(=O)c3c(O)ccc(O)c3c(=O)c2c(*)cc1
+
+Apomorphines
+[N+0]1C2Cc3c[c;R1][c;R1][c;R1][c;R2]3[c;R2]4[c;R1][c;R1][c;R1]c(c24)CC1
+*N1C2Cc3ccccc3c4cccc(c24)CC1
+
+Arachidonic acids/amides
+*C(=O)CCCC=CCC=CCC=CCC=CCCCC[C;H3]
+*C(=O)CCCC=CCC=CCC=CCC=CCCCCC
+
+Arginine residue
+[!$([C;H2])][C;H2][C;H2][C;H2][N;H]C(=[N;H])[N;H2]
+*CCCNC(=N)N
+
+Arsenic (containing)
+[As]
+*[As]*
+
+Artemisinin (incl. 11-aza-analogs) (antimalarials)
+CC1CCC2C~C[O,N]C3OC4(C)CCC1C23OO4
+CC1CCC2C(C)C*C3OC4(C)CCC1C23OO4 
+
+Ascomycin analogs
+CC(=CC1CCCCC1)C4CCCC(=O)CC=CCCCCC2CCCC(O2)C(=O)C(=O)N3CCCCC3C(=O)O4
+O1C2CCCC1C(=O)C(=O)N3CCCCC3C(=O)OC(C(C)=CC5CCCCC5)CCCC(=O)CC=CCCCC2
+
+Loratadine analogs (tricyclics)
+C=*1c2aaaac2*~*c3aaaac13
+*C=C1c2ccccc2C*c3ccccc13
+
+Atropinium analogs
+C[N+;R2]1(C)C2CCC1CC(O)C2
+C[N+;R2]1(C)C2CCC1CC(O*)C2
+
+Atropines (tropanyl esters)
+*C(=O)OC1CC2[N+0](C)C(C1)CC2
+*C(=O)OC1CC2N(C)C(C1)CC2 
+
+4-Aza-androst-1-enones (finasterides)
+*NC(=O)C1C2(C)CCC3C4(C)C=CC(=O)NC4CCC3C2CC1
+*NC(=O)C1C2(C)CCC3C4(C)C=CC(=O)NC4CCC3C2CC1
+
+4-Aza-androst/ane,ene/-3-one
+N1C2CCC3C4CCC(*)C4(C)CCC3C2(C)C~CC1=O
+*N1C2CCC3C4CCC(*)C4(C)CCC3C2(C)CCC1=O 
+
+1-Aza-bicycloheptane (muscarinics)
+[#6,#8]C1C2CCN(C2)C1
+*C1C2CCN(C2)C1 
+
+Azabicyclo[3.2.1]octane
+C1CC2CNCC1O2
+C1CC2CNCC1O2
+
+3-azabicyclo[3.1.0]hexyl
+# [N;R1]1[$([C;R1]);!$(C=*)][C;R2]2[C;R1][C;R2]2[$([C;R1]);!$(C=*)]1
+[N;R1]1{C1}[C;R2]2[C;R1][C;R2]2{C1}1
+N1CC2CC2C1 
+
+3-Aza-bicyclo[3.2.2]nonane
+*N1CC2CCC(CC2)C1
+*N1CC2CCC(CC2)C1
+
+7-Aza-1H-indole
+[nH]1[c;R1][c;R1]c2cccnc12
+[nH]1ccc2cccnc12
+
+Azetidin-2-one (beta lactam)
+# *[N;R1]1[C;R1](=O)[C;R1][$([C;R1]);!$(C=*)]1
+*[N;R1]1[C;R1](=O)[C;R1]{C1}1
+*N1C(=O)CC1
+
+Azetidine
+# *[N;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*[N;R1]1{C1}{C1}{C1}1
+*N1CCC1
+
+Azido-nucleosides
+{!C}C1CCC(C)O1 and N=[N+]=[N-]
+*C1CCC(CO)O1.N=[N+]=[N-]
+
+Aziridine
+[N+0;R1]1[C;R1][C;R1]1
+*N1CC1 
+
+Aziridinyl benzoquinones
+C1CN1C1=CC(=O)C(N2CC2)=CC1=O
+C1CN1C1=C(*)C(=O)C(n2CC2)=C(*)C1=O 
+
+Azo
+[c,n;R1][N;D2]=[N;D2][c,C,n;R1]
+c1ccccc1N=Nc2ccccc2 
+
+Baker's antifol analogs
+C1N=C(N)N=C(N)N1c2ccccc2
+c1ccccc1N1C(C)(C)N=C(N)N=C1N
+
+Barbiturate
+C1C(=O)NC(=O)NC1=O
+*C1(*)C(=O)NC(=O)NC1=O
+
+Barbiturate (N-subs)
+[$(C);!$(C=O)]1C(=O)[N;H0]C(=O)NC1=O
+*C1(*)C(=O)N(*)C(=O)NC1=O
+
+Barbiturate, thio/seleno
+*C1(*)C(=O)NC(=S)NC1=O
+*C1(*)C(=O)NC(=S)NC1=O
+
+Bendizole (flukicides)
+*OC(=O)Nc1[nH]c2ccccc2n1
+*OC(=O)Nc1[nH]c2ccccc2n1
+
+Benzamidines
+# [N;H2]C(=[N;H1,H2])c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+[N;H2]C(=[N;H1,H2])c1{c2}{c2}{c2}{c2}{c2}1
+c1ccccc1C(=N)N
+
+1-Benzazepine-tetrahydro-2-oxo
+N1C(=O)[C;R1][C;R1][C;R1][c;R2]2cccc[c;R2]12
+*N1C(=O)CCCc2ccccc12 
+
+1-Benzazepine-tetrahydro-1-amide
+C(=O)N1CCC[C;H2]c2ccccc12
+*C(=O)N1CCCCc2ccccc12 
+
+Benzhydryl, alpha-hydroxy (anticholinergics)
+*[C;R0]([OH])(c1ccccc1)c2ccccc2
+*C(O)(c1ccccc1)c2ccccc2
+
+Benzhydryl, methyl
+*[C;R0;H1](c1ccccc1)c2ccccc2
+*C(c1ccccc1)c2ccccc2
+
+Benzhydryl piperazine analogs
+[N;R1][C;R0](c1ccccc1)c2ccccc2
+C3CNCCN3C(c1ccccc1)c2ccccc2
+
+Benzilic acid analogs (anticholinergics)
+[O,N,S]C(=O)[C;R0]([OH])(c1ccccc1)c2ccccc2
+*OC(=O)C(O)(c1ccccc1)c2ccccc2 
+
+Benzilic choline
+*[N+;R0](*)(*)CCOC(=O)C(O)(c1ccccc1)c2ccccc2
+*[N+](*)(*)CCOC(=O)C(O)(c1ccccc1)c2ccccc2 
+
+Benzimidazole (1H)
+# [n;H0;X2]1[$([c;R1]);!$(c=*)][n;H1]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[n;H0;X2]1{c2}[n;H1]c2{c2}{c2}{c2}{c2}c12
+[nH]1cnc2ccccc12
+
+Benzimidazole (1-subs)
+# [c,C,N,n,O,S][n;H0]1[$([c;R1]);!$(c=*)][$([n;H0;X2]),$([nH])]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[c,C,N,n,O,S][n;H0]1{c2}{n3}c2{c2}{c2}{c2}{c2}c12
+*n1cnc2ccccc12
+
+3H-Benzisofuranone
+# [$([C;R1]);!$(C=*)]1c2c[c;R1][c;R1][c;R1]c2C(=O)O1
+{C1}1c2c[c;R1][c;R1][c;R1]c2C(=O)O1
+*C1c2ccccc2C(=O)O1 
+
+1,2-Benzisothiazole
+# s1n[$([c;R1]);!$(c=*)]c2ccccc12
+s1n{c2}c2ccccc12
+s1nc(*)c2ccccc12 
+
+1,2-Benzisothiazole-3-one,1,1-dioxide
+*N1S(=O)(=O)c2ccccc2C1=O
+*N1S(=O)(=O)c2ccccc2C1=O
+
+Benzisoxazole
+o1ncc2cc[c;R1][c;R1]c12
+c2ccc1oncc1c2 
+
+Benzodiazepine, 1-(4 or 5)
+c2([N;R1]~[C;R1]~[C;R1]~[C;R1]~[N;R1]1)[c;R1][c;R1][c;R1][c;R1]c21 or c2([C;R1]~[N;R1]~[C;R1]~[C;R1]~[N;R1]1)[c;R1][c;R1][c;R1][c;R1]c21
+*N1c2ccccc2N(*)C(*)C(*)C1*.*N1c2ccccc2C(*)N(*)C(*)C1*
+
+Benzodiazepine (1-subs,1,4, medazepam analogs)
+# *[N;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]N=Cc2[c;R1][c;R1][c;R1][c;R1]c12
+*[N;R1]1{C1}{C1}N=Cc2[c;R1][c;R1][c;R1][c;R1]c12
+*N1CCN=Cc2ccccc12
+
+Benzodiazepin-2-one (1-subs, 1,4)
+# *[N;R1]1c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2C=NCC1=O
+*[N;R1]1c2{c2}{c2}{c2}{c2}c2C=NCC1=O
+*N1c2ccccc2C(*)=NCC1=O
+
+Benzodiazepin-2-one (1H;1,4)
+# [N;R1;H1]1c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2C=NCC1=O
+[N;R1;H1]1c2{c2}{c2}{c2}{c2}c2C=NCC1=O
+N1c2ccccc2C(*)=NCC1=O
+
+Benzodiazepin-tricyclic-azoles
+[C,N;R1;r7]1~[C,N;R1;r7]~[C,N;R1;r7]~[c;R2;r7;r6]2[c;R1][c;R1][c;R1][c;R1][c;R2;r7;r6]2[n,N;R2;r5;r7][c,C;R2;r5;r7]1
+C1=NCc2cncn2c3ccccc13
+# the target is a bit of over-kill, but very precise
+# [a;R1;r5]3[a;R1;r5][a;R1;r5]c4~C~[N;R1]~[C;R1]~c2ccccc2n34
+
+1,4-Benzodioxan
+[C;R1]2[C;R1]Oc1c[c;R1][c;R1][c;R1]c1O2
+O1CCOc2ccccc12
+
+Benzo-dipyrrole
+*N1CCc2c3cc[nH]c3ccc12
+*N1CCc2c3cc[nH]c3ccc12
+
+Benzofuran
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1o[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([c;R1]);!$(c=*)]2
+{c2}2{c2}{c2}c1o{c2}{c2}c1{c2}2
+o1ccc2ccccc12
+
+Benzofuran,2,3-dihydro
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)]c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[O;R1]2
+{C1}2{C1}c1{c2}{c2}{c2}{c2}c1[O;R1]2
+O1CCc2ccccc12
+# seems like a bug that A-VINIFERIN  matches
+
+3H-Benzofuranone analogs
+O=C2Cc1ccccc1O2
+O1C(=O)Cc2ccccc12
+
+Benzofurazan and oxide
+c2[c;R1][c;R1]c1nonc1[c;R1]2
+n1onc2ccccc12
+
+6,7-Benzomorphans (azocine analgesics)
+*[N;R1]1[C;R2]2[C;R1][c;R2]3[c;R1][c;R1][c;R1][c;R1][c;R2]3[C;R2]([C;R2]2)[C;R1][C;R1]1
+*N1C2Cc3ccc(*)cc3C(C2)CC1
+
+1,2-Benzopyran
+[C;R1]2Oc1[c;R1][c;R1][c;R1][c;R1]c1[C;R1]=[C;R1]2
+O1CC=Cc2ccccc12
+
+1-2H-Benzopyran
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)][O;R1]c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([C;R1]);!$(C=*)]2
+{C1}2{C1}[O;R1]c1{c2}{c2}{c2}{c2}c1{C1}2
+O1CCCc2ccccc12
+
+Benzopyran,2,2-dimethyl (K channel openers)
+[O;R1]1[C;R1]([C;H3])([C;H3])[C;R1]~Cc2[c;R1][c;R1][c;R1][c;R1]c12
+O1C(C)(C)CC(*)c2ccccc12
+
+Benzopyran-4-one,2-phenyl (Flavones)
+O=c1cc(oc2ccccc12)c3ccccc3
+c1ccccc1c1oc2ccccc2c(=O)c1
+
+Benzoquinone
+[C;R1]1=[C;R1][C;R1](=O)[C;R1]=[C;R1][C;R1]1=O
+*C1=CC(=O)C(*)=CC1=O
+
+Benzoquinone-mon-oxime (or imine)
+*N=C1C=CC(=O)C=C1
+*N=C1C=CC(=O)C=C1
+
+Benzothiadiazine-dioxide (2H)
+N1=CNS(=O)(=O)c2ccccc12
+N1=C(*)NS(=O)(=O)c2ccccc12
+
+Benzothiadiazine-dioxide (2-subs) (diuretics)
+O=S1(=O)N=[C;R1][N;H1]c2ccccc12
+*N1S(=O)(=O)c2ccccc2N=C1
+
+Benzothiadiazine,dihydro,1,1-dioxide (diuretics)
+O=S1(=O)[N;H1][C;R1][N;H1]c2ccccc12
+N1CNS(=O)(=O)c2ccccc12
+
+Benzothiadiazole (1,2,3)
+[c;R1]2[c;R1][c;R1]c1snnc1c2
+n1nsc2ccccc12
+
+Benzothiazole
+# [c;R1]2[c;R1][c;R1]c1s[$([c;R1]);!$(c=*)][n+0]c1[c;R1]2
+[c;R1]2[c;R1][c;R1]c1s{c2}[n+0]c1[c;R1]2
+n1csc2ccccc12
+
+Benzothiazole-2-imino
+N=c2[nH]c1ccccc1s2
+c2ccc1[nH]c(=N)sc1c2
+
+Benzothiazol-2-one
+[n;H0,H1]1c(=O)sc2c[c;R1][c;R1][c;R1]c12
+*N1C(=O)Sc2ccccc12
+
+Benzothiophene
+c2ccc1sccc1c2
+c2ccc1sccc1c2
+
+Benzotriazin-4-one (3-subs.)
+*n1nnc2ccccc2c1=O
+*Cn1nnc2ccccc2c1=O
+
+Benzotriazole (1-H)
+c2ccc1[nH]nnc1c2
+[nH]1nnc2ccccc12
+
+Benzotriazole (1-subst.)
+[#6,#7,#8][n;R1]1[n;R1][n;R1]c2ccccc12
+*n1nnc2ccccc12
+
+Benzotriazole (2-subst.)
+n1n([#6,#7,#8])nc2ccccc12
+n1n(*)nc2ccccc12
+
+Benzotriazole (1 or 2 subst.)
+[#6,#7,#8][n;R1]1[n;R1][n;R1]c2ccccc12 or [n;R1]1[n;R1]([#6,#7,#8])[n;R1]c2ccccc12
+*n1nnc2ccccc12
+
+Benzoxathiins
+O1CCSc2ccccc12
+O1C(*)C(*)Sc2ccccc12
+
+2,4-Benzoxazin-3-one (4-H)
+O=C2[N;H1]c1ccccc1C(*)O2
+N1C(=O)OCc2ccccc12
+
+1,4-Benzoxazine 3-one (1-H)
+O=C2[C;H2]Oc1ccccc1[N;H1]2
+O1CC(=O)Nc2ccccc12
+
+1,4-Benzoxazin-3-one (4-subs)
+*[N;H0]1C(=O)COc2ccccc12
+*N1C(=O)COc2ccccc12
+
+2,3-Benzoxazine-1-one
+[c;R1]1[n;R1][o;R1]c(=O)c2[c;R1][c;R1][c;R1][c;R1]c12
+c1noc(=O)c2ccccc12
+
+Benzoxazole
+[c;R1]2[c;R1][c;R1]c1[o;D2]c[n;D2]c1[c;R1]2
+n1coc2ccccc12
+
+Benzoxazol-2-one
+O=c2[nH]c1ccccc1o2
+[nH]1c(=O)oc2ccccc12
+
+Benzoylhydrazone
+C=N[N;R0]C(=O)c1ccccc1
+C=NNC(=O)c1ccccc1
+
+Benzylpyrimidines,2,4-diamino (DHFR inhib.)
+[N;H2]c1nc([N;H2])ncc1[C;H2]c2[c;R1][c;R1][c;R1][c;R1][c;R1]2
+Nc1nc(N)ncc1Cc2ccc(cc2)*
+
+Berberine analogs
+c6ccc5[#6]~[#6]3c2cc1OCOc1cc2CC[#7+]3[#6]c5c6
+O1COc2cc3CC[n+]4cc5ccccc5cc4c3cc12
+
+Berbine analogs
+C3Cc1ccccc1C4Cc2ccccc2CN34
+c1cccc2CC3c4ccccc4CCN3Cc12
+
+Beta-alanine (amide)
+*C(=O)[NH][CH2][CH2]C(=O)[OH]
+*C(=O)NCCC(=O)O
+
+2-hydroxypropyl amine (common beta-blocker)
+*O[CH2][CH]([OH])[CH2][N;R0]*
+*OCC(O)CN*
+
+Beta-diketoacids (HIV integrase inh.)
+[OH]C(=O)[C;R0](~O)~[C;D2]C(=O){C}
+*C(=O)CC(=O)C(=O)O
+
+Betulic acids (anti-cancer,anti-virals)
+C1CCC2(C)C3CCC4C5CCCC5(C(=O)O)CCC4(C)C3(C)CCC2C1(C)C
+*C1CCC2(C)C3CCC4C5C(C(C)=C)CCC5(C(=O)O)CCC4(C)C3(C)CCC2C1(C)C
+
+Bicyclo[3.1.1]heptane (pinanes)
+[C;R2]1[C;R2]2[C;R1][C;R2]1[C;R1][C;R1][C;R1]2
+*C1(*)C2C(*)C1CCC2
+
+Bicyclo[3.1.0]hexane (mglur modifiers)
+OC(=O)C1(*)C2C(C(=O)O)C2CC1
+OC(=O)C1(*)C2C(C(=O)O)C2CC1
+
+Bicyclo[2,2,2]octane
+C12[C;R1][C;R1][C;R2]([C;R1][C;R1]2)[C;R2]C1
+*C12C(*)CC(CC2)CC1
+
+Bis(dichlorethyl)amine (mustards)
+[N+0;D3;R0]([C;H2][C;H2]Cl)[C;H2][C;H2]Cl
+*N(CCCl)CCCl
+
+Boc (t-boc; amino protecting function)
+[N;R0;H1]C(=O)O[C;R0]([C;H3])([C;H3])[C;H3]
+*NC(=O)OC(C)(C)C
+
+Boric acids
+[OH][B][OH]
+*B(O)O
+
+Bornane
+CC1(C)C2(C)C(*)CC1CC2
+CC1(C)C2(C)C(*)CC1CC2
+
+Bromo
+*Br
+*Br
+
+Bruceolides
+*C1C(=O)OC2CC3C=CC(=O)CC3C4CCC5C1C24CO5
+*C1C(=O)OC2CC3C=CC(=O)CC3C4CCC5C1C24CO5
+
+Butanamide,2-phenylazo-3-oxo
+c1ccccc1N=NC(C(=O)C)C(=O)N*
+c1ccccc1N=NC(C(=O)C)C(=O)N*
+
+'..butazones' (anti-inflammatories)
+C1C(=O)N(c2ccccc2)N(c3ccccc3)C1=O
+*CC1C(=O)n(c2ccccc2)n(c3ccccc3)C1=O
+
+Butenolide (2-5H-Furanone)
+# [$([C;R1]);!$(C=*)]1OC(=O)[C;R1]=C1
+{C1}1OC(=O)[C;R1]=C1
+*C1OC(=O)C=C1
+
+Butyrolactone,alpha-methylene
+C=C1[C;R1]COC1=O
+C1C(=C)C(=O)OC1
+
+Cadmium (containing)
+[Cd]
+*[Cd]*
+
+Calciferol analogs
+CC12C~C~C~C1C(CCC2)=[C;R0][C;R0]=C3CCCCC3
+C1CCCCC1=CC=C1C2CCCC2(C)CCC1
+
+Camphene
+# C1[C;R2]2C(=[C,N])[$([C;R1]);!$(C=*)]C1[C;R1][C;R1]2
+C1[C;R2]2C(=[C,N]){C1}C1[C;R1][C;R1]2
+C1C2C(=*)CC1CC2
+
+Camphor analogs
+# CC1(C)C2CCC1C(=O)[$([C;R1]);!$(C=*)]2
+CC1(C)C2CCC1C(=O){C1}2
+O=C1C2CCC(C1)C2(C)C
+
+Camptothecins (antineoplastics)
+# c2c(=O)n3Cc4cc5ccccc5nc4c3cc2[C;R1]([O,C])(CC)[C;R1](=O)[$([O;R1][C;R1]),$([C;R1])]
+c2c(=O)n3Cc4cc5ccccc5nc4c3cc2[C;R1]([O,C])(CC)[C;R1](=O)[$([O;R1][C;R1]),$([C;R1])]
+*OC1(CC)C(=O)OCc2c(=O)n3Cc4cc5ccccc5nc4c3cc12
+
+Cannabinoids
+c3cc(O)c1c(OC(C)(C)[#6]~2~[#6]~[#6]~[#6]~[#6]~[#6]12)c3
+Oc1cc(*)cc2OCC3CCCCC3c12
+
+Carbamate (NH2)
+*OC(=O)[NH2]
+*OC(=O)N
+
+Carbamates (NH-)
+{C}OC(=O)[NH][#6]
+*OC(=O)N*
+
+Carbamoyl oxime
+C(=O)ON=C
+*C(=O)ON=C*
+
+1,8-Carbamoylnaphthalene (CDK inhib.)
+c1ccc2cccc(c23)nc(=O)c13
+*c1ccc2cccc(c23)NC(=O)c13
+# bug in OpenBabel?  we prefer c1ccc2cccc(c23)NC(=O)c13 
+
+Carbapenem (antibiotics)
+# [$([C;R1]);!$(C=*)]1C(=O)N2C(C(=O)O)=[C;R1]CC12
+{C1}1C(=O)N2C(C(=O)O)=[C;R1]CC12
+*C1C(=O)N2C(C(=O)O*)=C(*)CC12
+
+Carbazole (NH)
+[nH]1c2c[c;R1][c;R1][c;R1]c2c3c[c;R1][c;R1][c;R1]c13
+[nH]1c2ccccc2c3ccccc13
+
+Carbazole (N-subs)
+[C,O,N,S]n1c2c[c;R1][c;R1][c;R1]c2c3c[c;R1][c;R1][c;R1]c13
+*n1c2ccccc2c3ccccc13
+
+Carbazole (N-subs;some ring saturation)
+[#7;R1]1[#6]2[#6][#6;R1][#6;R1][#6;R1][#6]2[#6]3[#6][#6;R1][#6;R1][#6;R1][#6]13
+*n1c2CCCCc2c3ccccc13
+
+Carbodiimide
+*N=[C;R0]=N*
+*N=C=N*
+
+Carboline (beta)
+[nH]1c2cnccc2c3ccccc13
+[nH]1c2cnccc2c3ccccc13
+
+Carboline (beta-tetrahydro)
+C1Cc2c(C[N;H1]1)[nH]c3ccccc23
+[nH]1c2ccccc2c3CCNCc13
+
+Carboline (beta-tetrahydro,N,N-disubs.)
+# *N1[$([C;R1]);!$(C=*)]c2c3ccccc3[n;!H]c2CC1
+*N1{C1}c2c3ccccc3[n;!H]c2CC1
+*N1Cc2c3ccccc3n(*)c2CC1
+
+Carbonate ester
+{C}OC(=O)O{C}
+*OC(=O)O*
+
+Carbonylcyanide hydrazone
+*NN=C(C#N)C#N
+*NN=C(C#N)C#N
+
+Carbonyl peroxide (ester)
+{C}[C;R0](=O)OO{C}
+*C(=O)OO*
+
+Carbostyril (2-Quinolone)
+# [n;R1;H0,H1]1c(=O)[c;R1][c;R1]c2c[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[n;R1;H0,H1]1c(=O)[c;R1][c;R1]c2c{c2}{c2}{c2}c12
+*n1c(=O)ccc2ccccc12
+
+Carboxaldehydes
+{C}[C;H1](=O)
+*C(=O)H
+
+Carboxamide,N-dimethylaminoethyl
+*[C;R0](=O)[N;H][C;H2][C;H2]N([C;H3])[C;H3]
+*C(=O)NCCN(C)C
+
+Carboxylic acid
+*C(=O)[OH]
+*C(=O)O
+
+Cardiotonic digitoxins
+CC12CCC([O;R0])CC1CCC3C2{C1}CC4[C;R1;D3]({C})(CCC34O)
+*C1C2CCC3C4CCC(O*)CC4CCC3C2CC1
+# C1OC(=O)C=C1C1C2CCC3C4CCC(O*)CC4CCC3C2CC1
+
+Cephaloridine analogs (pyridinium antibiotics)
+O=C1N2C(C(=O)O)=CCSC2C1 and [n+;R1;r6][c;R1][c;R1][c;R1][c;R1][c;R1]
+O=C1N2C(C(=O)[O-])=C(C[n+]3ccccc3)CSC2C1*
+
+Cephalosporin
+C1~CCSC2C(N)C(=O)N12
+C1=CCSC2C(N)C(=O)N12
+# *OC(=O)C1C(*)=CSC2C(NC(=O)*)C(=O)N12
+
+Cephalosporin-4-oxo analogs
+C1C2COC=C(C(=O)O)N2C1=O
+*C1C2COC(*)=C(C(=O)O)N2C1=O
+
+Chalcones
+c1ccccc1C(=O)[C;R0;H1]=[C;R0]c1ccccc1
+c1ccccc1C(=O)C=Cc1ccccc1
+
+Chloride Ion
+[Cl-]
+[Cl-]
+
+Chloro
+*Cl
+*Cl
+
+Chloroethylnitrosourea (antineoplastics)
+NC(=O)N(N=O)CCCl
+*NC(=O)N(N=O)CCCl
+
+Chloroquine analogs
+# n1[$([c;R1]);!$(c=*)][c;R1][c;R1]([N;R0])c2[c;R1][c;R1]c(Cl)[c;R1]c12
+n1{c2}[c;R1][c;R1]([N;R0])c2[c;R1][c;R1]c(Cl)[c;R1]c12
+n1ccc(N*)c2ccc(Cl)cc12
+
+Cholanes
+C[C;R0](C)C1C2(C){C1}{C1}[C;R2]3C4(C)CC[C;R1]CC4{C1}{C1}C3C2{C1}{C1}1
+CC(C)C1C2(C)CCC3C4(C)CCCCC4CCC3C2CC1
+
+Cholecalciferol analogs
+CC12CCCC1C(CCC2)=CC=C3CCCCC3=C
+C=C1CCCCC1=CC=C1C2CCCC2(C)CCC1
+
+Cholic acid analogs
+C(=O)CCC(C)C1C2(C)CCC3C4CCC(O)CC4CCC3C2CC1
+*OC(=O)CCC(C)C1C2(C)CCC3C4CCC(O)CC4CCC3C2CC1
+
+4H-Chromene
+O1[C;R1]=[C;R1][C;R1]c2c[c;R1][c;R1][c;R1]c12
+O1C=CCc2ccccc12
+
+Chromone
+# o1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c(=O)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+o1{c2}{c2}c(=O)c2{c2}{c2}{c2}{c2}c12
+o1ccc(=O)c2ccccc12
+
+Cinnamamide (+ other arom. & allyl amides)
+c[C;H1]=[C;H1]C(=O)[N;H1]*
+c1ccccc1C=CC(=O)N*
+
+Cocaine
+C(=O)C1CCC2NC1CC2
+*C(=O)C1C(*)CC2N(*)C1CC2
+
+Colchicines (antineoplastics)
+O=c3cccc1c(CCCc2ccccc12)c3
+O=c1cccc2c3ccccc3CCCc2c1
+
+Cortisones
+OCC(~O)C1CCC2C3CCC4=CC(=O)CCC4(C)C3C(=O)CC12C
+*OCC(=O)C1(O*)CCC2C3CCC4=CC(=O)CCC4(C)C3C(=O)CC12C
+
+Coumarin
+O=c2[c;R1][c;R1]c1c[c;R1][c;R1]cc1o2
+o1c(=O)ccc2ccccc12
+
+Coumarin, 4-hydroxy
+[OH]c1cc(=O)oc2ccccc12
+o1c(=O)cc(O)c2ccccc12
+
+Coumarin-4-hydroxy,bis
+Oc1c2ccccc2oc(=O)c1C(*)c1c(=O)oc2ccccc2c1O
+Oc1c2ccccc2oc(=O)c1C(*)c1c(=O)oc2ccccc2c1O
+
+Cyanoguanidines (cimetidines)
+N({C})C(N{C})=NC#N
+*NC(N*)=NC#N
+
+Cyano-imine (ylidene cyanamide)
+*C(*)=NC#N
+*C(*)=NC#N
+
+Cyano
+*C#N
+*C#N
+
+Cyano,vinyl-attached
+*C=[CH]C#N
+*C=CC#N
+
+Cyclic(7)urea, di-hydroxy (anti-viral,protease inh.)
+*N1C(=O)N(*)CC(O)C(O)C1
+*N1C(=O)N(*)CC(O)C(O)C1
+
+Cyclobutene-dione
+O=[#6]1[#6;R1][#6;R1][#6]1=O
+O=C1C(=O)C=C1
+
+2-Cyclohexene-1-one
+# O=C1C=[C;R1][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+O=C1C=[C;R1]{C1}{C1}{C1}1
+O=C1C=CCCC1
+
+Cyclopropyl
+C1CC1
+*C1CC1
+
+Cyclopropyl carboxylates (incl. Chrysanthamate insecticides)
+[$(c),$(C=C)]C1C(C)(C)C1C(=O)O*
+CC(C)=CC1C(C)(C)C1C(=O)O*
+
+Cyclosporin analogs
+*C1C(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)N1
+*C1C(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)NCC(=O)N1
+
+Cytidines
+c1cc(N)nc(=O)n1C1OCCC1
+c1cc(N)nc(=O)n1C1OCCC1
+
+Daunorubicins
+c1cccc2C(=O)c3c(O)c4CC(C(=O)C)(O)CC(O)c4c(O)c3C(=O)c12
+c1cccc2C(=O)c3c(O)c4CC(C(=O)C)(O)CC(O)c4c(O)c3C(=O)c12
+
+Dehydrocholates
+OC(=O)CCC(C)C1CCC2C3C(=O)CC4CC(=O)CCC4(C)C3CC(=O)C12C
+*OC(=O)CCC(C)C1CCC2C3C(=O)CC4CC(=O)CCC4(C)C3CC(=O)C12C
+
+1,7-Diazaindene
+n1n2c[c;R1][c;R1][c;R1][c;R2]2cc1
+n1n2ccccc2cc1
+
+1,3-Diazapine-2-one (antiviral HIV)
+*N1C(=O)N(*)CCCC1
+*N1C(=O)N(*)CCCC1
+
+1,4-Diazapine-2-one
+# N1C(=O)[C;R1]N(*)[$([C;R1]);!$(C=*)]CC1
+N1C(=O)[C;R1]N(*){C1}CC1
+*N1C(=O)CN(*)CCC1
+
+Dibenzazepines
+[#7]1c2ccccc2[#6,#7,O,S]~[#6,#7,O,S]c3ccccc13
+*N1c2ccccc2**c3ccccc13
+
+Dibenzoylhydrazines (larvacides)
+c1c[c;R1][c;R1]cc1C(=O)[N;R0][N;R0]C(=O)c1c[c;R1][c;R1]cc1
+c1ccccc1C(=O)NN(*)C(=O)c1ccccc1
+
+Dicarbonyl peroxide
+{C}C(=O)OOC(=O){C}
+*C(=O)OOC(=O)*
+
+Diethylaminoethyl esters
+*C(=O)O[CH2][CH2][N+0]([CH2][CH3])[CH2][CH3]
+*C(=O)OCCN(CC)CC
+
+Diethylaminoethoxy
+{C}O[C;H2][C;H2][N;X3]([C;H2][C;H3])[C;H2][C;H3]
+*OCCN(CC)CC
+
+Difluoromethoxy
+*O[C;H1](F)F
+*OC(F)F
+
+Digitoxin glycosides
+O1CCCCC1OC1CCC2(C)C3CCC4(C)C(C5~CC(=O)OC5)CCC4(O)C3CCC2C1
+O1CC(*)C(*)CC1OC1CCC2(C)C3CCC4(C)C(C5=CC(=O)OC5)CCC4(O)C3CCC2C1
+
+Dihydropyridine (1,4) (Ca channel action)
+C1[C;R1](*)=[C;R1]N[C;R1](*)=[C;R1]1
+*C1C(*)=C(*)NC(*)=C1*
+
+Dihydropyrones (antiviral HIV)
+# [$([C;R1]);!$(C=*)]1OC(=O)C=C[$([C;R1]);!$(C=*)]1
+{C1}1OC(=O)C=C{C1}1
+*C1OC(=O)C=CC1
+
+Dimethylamino-hexose antibiotics
+C1OCCC(N([C;H3])[C;H3])C1
+*OC1OCCC(N(C)C)C1
+
+4,7-Dioxobenothiazole (anti-fungals)
+s1cnc2C(=O)C=C(*)C(=O)c12
+s1cnc2C(=O)C=C(*)C(=O)c12
+
+Dioxolane (1,3)
+# O1[$([C;R1]);!$(C=*)]O[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+O1{C1}O{C1}{C1}1
+O1COCC1
+
+Dioxolane (1,3-2-spiro)
+# O1[C;R2]([#6;R])([#6;R])O[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+O1[C;R2]([#6;R])([#6;R])O{C1}{C1}1
+*C1(*)OCCO1
+
+Diphenylmethoxy (>CH-O)
+*O[C;H;R0](c1c[c;R1][c;R1]cc1)c2c[c;R1][c;R1]cc2
+*O[CH](c1ccccc1)c2ccccc2
+
+Diphenylalkoxy (>C<)
+*[C;R0]([O;H0;R0])(c1ccccc1)c2ccccc2
+*C(O*)(c1ccccc1)c2ccccc2
+
+Dipropylaminotetralins (DPAT)
+[C;H3]CC[N;R0](CC[C;H3])C1CCc2c[c;R1][c;R1][c;R1]c2C1
+CCCN(CCC)C1CCc2cccc(*)c2C1
+
+Docetaxel analogs (antineoplastics)
+[O,N]1CC2C3CC4CCC=C(C4)CCC3C~CC12
+*1CC2C3CC4CCC=C(C4)CCC3CCC12
+
+#OBSOLETE Doxorubicins (adriamycin neoplastics)
+#OCC(=O)C1Cc2cc3C(=O)c4ccccc4C(=O)c3c(O)c2CC1
+#OCC(=O)C1Cc2c(O)c3C(=O)c4ccccc4C(=O)c3c(O)c2CC1
+
+Epithilone analogs
+[C;R2]1[O;R1][C;R2]1~[C;R1]~[C;R1][O,N;R1][C;R1](=O)[C;R1]
+CC2CCCC1OC1CC(OC(=O)CC(O)C(C)(C)C(=O)C(C)C2O)C(C)=Cc3csc(C)n3
+
+Epoxycycloalkanes
+# O1[C;R2]([$([C;R1;r5,r6,r7,r8]);!$(C=*)])[C;R2]1([$([C;R1;r5,r6,r7,r8]);!$(C=*)])
+O1[C;R2]([$([C;R1;r{5,8}]);!$(C=*)])[C;R2]1([$([C;R1;r{5,8}]);!$(C=*)])
+O1C2C**CC12
+
+Ergolins (LSD analogs)
+C12C[#6]3[#6][#7]c4cccc(c34)C2~[C,O]~CCN1
+*C1CN(*)C2Cc3c[nH]c4cccc(c34)C2C1
+
+Ergolin-like (3 rings)
+[N;H0;R0]C1Cc2c[nH]c3cccc(c23)C1
+*N(*)C1Cc2c[nH]c3cccc(c23)C1
+
+Erythromycins
+OC1CC(=O)OCCCCC(=O)CCCC(O)C1
+*OC1CC(=O)OCCCCC(=O)CCCC(O*)C1
+
+Erythromycin-carbamate/carbonate
+O~C1CC(=O)OCC2[O,N]C(=O)[O,N]C2CCCCCC(~O)C1
+*OC1CC(=O)OCC2OC(=O)OC2CCCCCC(O*)C1
+
+Estradi/triol analogs
+[O;R0]C1CCC2[#6]3[#6][#6][#6]4[#6][#6]([O;R0])[#6][#6][#6]4[#6]3CCC12C
+*OC1CCC2C3CCC4CC(O*)CCC4(C)C3CCC12C
+
+Esters
+{C}[C;R0](=O)[O;R0]{C}
+*C(=O)O*
+
+Fenchyl analogs
+*C1C2(C)CCC(C2)C1(C)C
+*C1C2(C)CCC(C2)C1(C)C
+
+Ferrous (ferric)
+[Fe]
+*[Fe]*
+
+Fibric acid analogs
+[C;H3]C([C;H3])([O;R0]*)C([OH])=O
+CC(C)(O*)C(O)=O
+
+Flavanol
+# c1c[c;R1][c;R1][c;R1]c1C1Oc2cccc(O)c2[$([C;R1]);!$(C=*)]C1
+c1c[c;R1][c;R1][c;R1]c1C1Oc2cccc(O)c2{C1}C1
+c1ccccc1C1Oc2cccc(O)c2CC1
+
+Flavanone
+c1c[c;R1][c;R1][c;R1]c1C1CC(=O)c2ccccc2O1
+c1ccccc1C1CC(=O)c2ccccc2O1
+
+Flavonol
+o1c2c[c;R1][c;R1]c(O)c2c(=O)cc1c3ccccc3
+o1c2cccc(O)c2c(=O)cc1c3ccccc3
+
+Flavopiridols
+o1ccc(=O)c2c(O)cc(O)c(c12)C1~C~CN(*)CC1
+o1ccc(=O)c2c(O)cc(O)c(c12)C1CCN(*)CC1
+
+Fluconazole (antifungals)
+*C(O)(c1c(*)cc(*)cc1)Cn2ncnc2
+*C(O)(c1c(*)cc(*)cc1)Cn2ncnc2
+
+Floxacins
+*[n;H0;R1]1cc(C(=O)[OH])c(=O)c2[c;R1][c;R1][c;R1][c;R1]c12
+*n1cc(C(=O)O)c(=O)c2ccccc12
+
+Floxacins-8-aza
+*n1cc(C(=O)[OH])c(=O)c2[c;R1][c;R1][c;R1]nc12
+*n1cc(C(=O)O)c(=O)c2cccnc12
+
+Floxacins,3-fused ring
+*1**c2cccc3c(=O)c(C(=O)[OH])[c;R1][n;R2]1c23
+*1**c2cccc3c(=O)c(C(=O)O)cn1c23
+
+Fluoro
+F
+*F
+
+Fluoranthene
+c1ccc2c(c1)c3cccc4cccc2c34
+c1cccc2c3cccc4cccc(c34)c12
+
+Fluorenes and fluoren-ones
+[C;R1]2c1cccc[c;R2]1[c;R2]3ccccc23
+C1c2ccccc2c3ccccc13
+
+Fluoresceins
+O=C4OC2(c1ccccc1Oc3ccccc23)c5ccccc45
+O1C(=O)c2ccccc2C13c4ccccc4Oc5ccccc35
+
+Fluvastatin analogs (including Lipitor)
+O=C([$(O);!$(O[C;H3])])CC(O)CCC~Ca:ac1ccc(F)cc1
+CC(O)CC(O)CC(=O)O.Fc1ccccc1
+#CC(O)CC(O)CC(=O)[OH] and Fc1ccccc1
+
+Folic acid analogs (incl. di-deaza)
+c1ccc(cc1)C(=O)NC(C(=O)O)CCC(=O)O and c1nc2~[#6,#7]~[#6]~[#6](~[#6,#7]c2cn1)
+*c1nc2ccc(cc2c(=O)[nH]1)CN(*)c1ccc(cc1)C(=O)NC(C(=O)O)CCC(=O)O
+
+Formamido (substituent)
+*[N;H1][C;H1](=O)
+*NC(=O)(H)
+
+Formamido oxime (antifungal;antihypertensive)
+*O[N;R0]=[C;R0]N*
+*ON=CN*
+
+Formate (esters)
+{C}O[C;H1]=O
+*OC(H)=O
+
+Fumagillins (antibiotics, anti-angiogenics)
+O1CC12[C;R1]C[C;R1][C;R1]C2
+O1CC12C(*)CC(*)CC2
+
+Furan
+# [$([c;R1]);!$(c=*)]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][o;R1][$([c;R1]);!$(c=*)]1
+{c2}1{c2}{c2}[o;R1]{c2}1
+o1cccc1
+
+Furazan
+[c;R1]1[n;R1;X2][o;R1][n;R1;X2][c;R1]1
+*c1nonc1
+
+Furazan-2-oxide
+# [O-]-[n+1]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][n;R1][o;R1]1
+[O-]-[n+1]1{c2}{c2}[n;R1][o;R1]1
+O=n1oncc1
+
+Furopyrimidine
+# o1[c;R1][c;R1]c2[$([c;R1]);!$(c=*)]n[$([c;R1]);!$(c=*)]nc12
+o1[c;R1][c;R1]c2{c2}n{c2}nc12
+o1ccc2cncnc12
+
+Furo[2,3,b]quinolines (anti-neoplastics)
+*c1c2ccoc2nc3ccccc13
+*c1c2ccoc2nc3ccccc13
+
+Galanthaines
+COc2ccc3CN(C)CCC14C=CC(O)CC1Oc2c34
+COc2ccc3CN(C)CCC14C=CC(O)CC1Oc2c34
+
+Geldanamycin analogs
+O=C1N[#6]2~[#6]~[#6]~[#6]~[#6](CCCCCCC=CCCC~CC=C1)~[#6]2
+O=C1NC2=CC(=O)C=C(CCCCCCC=CCCC=CC=C1)C2=O
+
+Germanium (containing)
+[Ge]
+*[Ge]*
+
+Gitoxigenin & glycosides
+OC1CCC2([C;H3])C3C[C;H2]C4([C;H3])C(C5=CC(=O)OC5)C([OH])CC4([OH])C3CCC2C1
+*OC1CCC2(C)C3CCC4(C)C(C5=CC(=O)OC5)C(O)CC4(O)C3CCC2C1
+
+Glutamic acid analog
+[OH]C(=O)C(*)CCC(=O)[OH]
+OC(=O)C(*)CCC(=O)O
+
+Glutamic acid,pyro (5-oxoprolinamide)
+*C(=O)C1[C;H2][C;H2]C(=O)[N;H1]1
+*C(=O)C1CCC(=O)N1
+
+Glutamine (in peptides)
+*C(=O)[N;R0]C(CCC(=O)[NH2])[C;R0](=O)N*
+*NC(CCC(=O)N)C(=O)*
+# have extended the peptide backbone slightly on each end, to weed out structures which are
+# definitely not polypeptides
+
+Glutarimid-3-spiro (tranquilizers)
+N1C(=O)C[C;R2](CC1=O)([C;R1])([C;R1])
+*N1C(=O)CC2(CC1=O)CCCC2
+
+Glyoxals
+[C;H0,H1](=O)[C;H1]=O
+*C(=O)C=O
+
+Gold
+[Au]
+*[Au]*
+
+Gramicidins
+*C1C(=O)N2CCCC2C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)N3CCCC3C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)N1
+*C1C(=O)N2CCCC2C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)N3CCCC3C(=O)NC(*)C(=O)NC(*)C(=O)NC(*)C(=O)N1
+
+Guanidino (mono-subs)
+*[N;H1]C(=[N;H1])[N;H2]
+*NC(=N)N
+
+Guanidinosulfonyl
+*S(=O)(=O)[N;H1]C(=[N;H1])[N;H2]
+*S(=O)(=O)NC(=N)N
+
+Guanine (9-subs)
+n(~*)1cnc2c(=O)[n;X3&H1,X2&H0]c([N;H2])[n;X3&H1,X2&H0]c12
+*n1cnc2c(=O)[nH]c(N)nc12
+# 'H' floats between two aromatic nitrogens
+
+Guanylhydrazones
+*C=N[N;H1]C(=[N;H1])[N;H2]
+*C=NNC(N)=N
+
+Hexafluoro-2-propanol analogs
+*C([OH])(C(F)(F)F)C(F)(F)F
+*C(O)(C(F)(F)F)C(F)(F)F
+
+Histidine (in combi.)
+*[C;R0](*)C[c;R1][$(n[cH][nH][cH]),$([nH][cH]n[cH])]
+*C(*)Cc1nc[nH]c1
+# *[C;R0](*)C[c;R1]1{n1}[cH]{n1}[cH]1 # alternate macro target
+
+Homopiperazine
+*N1{C1}{C1}[NH]{C1}{C1}{C1}1
+*N1CC[NH]CCC1
+
+Homopiperazine,N,N-disubst.
+# *N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]N(*)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*N1{C1}{C1}N(*){C1}{C1}{C1}1
+*N1CCN(*)CCC1
+
+Hydantoin,N3-subs (anticonvulsants)
+[N;H0]1C(=O)[C;R1][N;H1]C1=O
+*N1C(=O)CNC1=O
+
+Hydantoin,spiro (aldose red. inhib.)
+N1C(=O)NC(=O)[C;R2]1([#6,#7,#8;R])[#6,#7,#8;R]
+N1C(=O)NC(=O)C12C**C2
+
+Hydrazinopropanenitrile (anti-inflammatory)
+*N([NH2])[CH2][CH2]C#N
+*N(N)CCC#N
+
+Hydromorphones
+Oc1ccc2CC3NCCC45C3CCC(=O)C4Oc1c25
+*Oc1ccc2CC3N(*)CCC45C3(*)CCC(=O)C4Oc1c25
+
+Hydroxamic acid
+[!N][C;R0](=O)[N;H1;R0][OH]
+*C(=O)NO
+
+Hydroxamic acid, N-subs
+[!N][C;R0](=O)[N;R0](*)[OH]
+*C(=O)N(*)O
+
+Hydroxyureas
+N([OH])C(=O)[N;H2]
+*N(O)C(=O)N
+
+Imidacloprid analogs
+# *=C1[N;H][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][N;R1]1*
+*=C1[N;H]{C1}{C1}[N;R1]1*
+*=C1NCCN1*
+
+Imidazoacridinones
+c1ccc2ncn3c4ccccc4c(=O)c1c23
+*c1ccc2ncn3c4ccc(*)cc4c(=O)c1c23 
+
+Imidazobenzodiazepines
+[C;R1]3[N;R1]~[C;R1]c2[c,n]cccc2[c,n]4[c,n][c,n;R1][c,n][c,n]34
+c1ccccc1C1=NCc2nncn2c3ccccc13
+
+Imidazo[2,1-a]isoindole (mazindol analogs)
+{C}N2Cc1ccccc1C2=N{C}
+N1=C2c3ccccc3CN2CC1
+
+Imidazole (1-H;2-subs)
+*[c;R1]1[n;H1;R1][c;R1][c;R1][n;R1]1
+*c1[nH]ccn1
+
+Imidazole (1-subs)
+# [*]~[n;R1;H0]1[$(c);!$(c=*)][n;X2][c;R1][c;R1]1
+[*]~[n;R1;H0]1[$(c);!$(c=*)][n;X2][c;R1][c;R1]1
+*n1cncc1
+
+Imidazolidinedione (1-subs, hydantoins)
+N1C(=O)[N;H]C(=O)C1
+*N1C(=O)NC(=O)C1(*)*
+
+Imidazolidinedione (1,3-disubs)
+[N;H0]1C(=O)[N;H0]C(=O)C1
+*N1C(=O)N(*)C(=O)C1
+
+2-Imidazolidinone
+# [N;H1]1[C;R1](=O)[N;R1](*)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N;H1]1[C;R1](=O)[N;R1](*){C1}{C1}1
+N1C(=O)N(*)CC1
+
+Imidazoline
+# C1=N[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][N;H1;R1]1
+C1=N{C1}{C1}[N;H1;R1]1
+*C1=NCCN1
+
+Imidazoline (1-subs.)
+# C1=N[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][N;H0;R1]1
+C1=N{C1}{C1}[N;H0;R1]1
+*N1C=NCC1
+
+Imidazoline-5-one
+O=C1[N;R1][C;R1]({C})=[N;R1][C;R1]1
+*C1NC(=O)C=N1
+
+Imidazolium
+*[n+;R1]1c[n;R1](*)[c;R1]c1
+*[n+]1cn(*)cc1
+
+Imidazo[1,2-b]pyridazine
+c2cnn1ccnc1c2
+n1c2cccnn2cc1
+
+4-Pyridineimidazole
+[nH]1c(*)nc2ncccc12
+[nH]1c(*)nc2ncccc12
+
+Imidazo-oxazine
+*c1nc2OCCCn2c1
+*c1nc2OCCCn2c1
+
+Imidazo-pyrimidinone
+[n;H0,H1]1[c;R1][c;R1]c(=O)n2ccnc12
+*n1ccc(=O)n2ccnc12
+
+Imidazo[1,2-A]pyridine
+[c;R1]2[c;R1][c;R1][n+0]1[c;R1][c;R1]nc1[c;R1]2
+n1ccn2ccccc12
+
+Imidazo[1,2,a]pyrimidine
+*c1nc2ncccn2c1
+*c1nc2ncccn2c1
+
+Imidazo[1,2-b]thiazole
+[c;R1]1[$([n;H0;X2]),$([nH])]c2s[c;R1][c;R1]n2[c;R1]1
+*c1nc2sccn2c1
+
+Immunomycin analogs (macrocyclic)
+O=C2OCCCCCCC=CCCCCC1CCCC(O1)C(=O)C(=O)N3CCCCC23
+O=C2OCCCCCCC=CCCCCC1CCCC(O1)C(=O)C(=O)N3CCCCC23
+
+Indazole,1H
+[n;H]1[n;X2][c;R1]c2ccccc12
+[nH]1ncc2ccccc12
+
+Indazole,1-subs
+*~[n;H0;R1]1[n;X2;R1][c;R1]c2ccccc12
+*n1ncc2ccccc12
+
+Indole (1H)
+# [n;H1]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[c;R1][c;R1][c;R1][c;R1]c12
+[n;H1]1{c2}{c2}c2[c;R1][c;R1][c;R1][c;R1]c12
+[nH]1ccc2ccccc12
+
+Indole (1-subs)
+*~[n;H0;R1;X3]1[c;R1][c;R1]c2[c;R1][c;R1][c;R1][c;R1]c12
+*n1ccc2ccccc12
+
+Istatins
+*N1C(=O)C(=O)c2ccccc12
+*N1C(=O)C(=O)c2ccccc12
+
+Indole,3-(2-aminoethyl) (serotonins)
+[N+0;H0;R0][C;H2][C;H2]c1c[nH]c2[c;R1][c;R1][c;R1][c;R1]c12
+*N(*)CCc1c[nH]c2ccccc12
+
+Indole-3-one,dihydro
+# [$([C;R1]);!$(C=*)]1C(=O)[N;H;R1]c2[c;R1][c;R1][c;R1][c;R1]c12
+{C1}1C(=O)[N;H;R1]c2[c;R1][c;R1][c;R1][c;R1]c12
+*C1C(=O)Nc2ccccc12
+
+Indole,perhydro (1-subs)
+*N1CCC2CCCCC12
+*N1CCC2CCCCC12
+
+2-Indolinone,3-vinylidine
+[#6,#7]=C1C(=O)[N;H1]c2ccccc12
+*=C1C(=O)Nc2ccccc12
+
+Indolines
+# *N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+*N1{C1}{C1}c2{c2}{c2}{c2}{c2}c12
+*N1CCc2ccccc12
+
+Indoline-ureas (serotonin agonists)
+*NC(=O)N1CCc2ccccc12
+*NC(=O)N1CCc2ccccc12
+
+2-Indolinone-3-ene (Semoxind anti-angiogenics)
+[#6,#7]=C1C(=O)Nc2ccccc12
+*N1C(=O)C(=C*)c2ccccc12
+
+Indolizines
+[c;R1]2[c;R1][c;R1]n1cccc1[c;R1]2
+c1ccn2ccccc12
+
+Indolizine,octahydro
+# C1[C;R1][C;R1]C2[$([C;R1]);!$(C=*)][C;R1][C;R1][$([C;R1]);!$(C=*)][N+0]12
+C1[C;R1][C;R1]C2{C1}[C;R1][C;R1]{C1}[N+0]12
+C1CCC2C(*)CCC(*)N12
+
+Indoloquinone
+[C;R0]n1ccc2C(=O)C=CC(=O)c12
+Cn1ccc2C(=O)C=CC(=O)c12
+
+Indomethacins (anti-inflammatory)
+C(=O)Cc1c2ccccc2n(c1)C(=O)c1c[c;R1][c;R1][c;R1]c1
+*C(=O)Cc1c2ccccc2n(c1)C(=O)c1ccccc1
+
+Iodo
+[I+0]
+*I
+
+Isatin semicarbazones
+*N1C(=O)C(=NN*)c2ccccc12
+*N1C(=O)C(=NN*)c2ccccc12
+
+Isocyanate
+{C}[N;R0]=C=O
+*N=C=O
+
+Isoflavone
+O[c;R1]1[c;R1]c2occ([c;R1]3[c;R1][c;R1][c;R1][c;R1]c3)c(=O)c2[c;R1][c;R1]1
+*Oc1cc2occ(c3ccccc3)c(=O)c2cc1
+
+Isoprene (di- or more)
+C[C;R0]=[C;R0]([C;R0])[C;R0][C;R0][C;R0]=[C;R0]([C;R0])C
+*CC(C)=CCC=C(C)C=C*
+
+Isoquinoline
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([c;R1]);!$(c=*)][n+0][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([c;R1]);!$(c=*)]2
+{c2}2{c2}{c2}c1{c2}[n+0]{c2}{c2}c1{c2}2
+n1cc2ccccc2cc1
+
+Isoquinoline,1,3,4-trione
+# *N1C(=O)C(=O)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2C1=O
+*N1C(=O)C(=O)c2{c2}{c2}{c2}{c2}c2C1=O
+*N1C(=O)C(=O)c2ccccc2C1=O
+
+Isoquinoline,2,3,4,5 tetrahydro
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)]c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([C;R1]);!$(C=*)][N;H1;R1]2
+{C1}2{C1}c1{c2}{c2}{c2}{c2}c1{C1}[N;H1;R1]2
+C1NCCc2ccccc12
+
+Isoquinoline,2,3,4,5-tetrahydro (2-subs.)
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)]c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([C;R1]);!$(C=*)][N+0;H0;R1]2*
+{C1}2{C1}c1{c2}{c2}{c2}{c2}c1{C1}[N+0;H0;R1]2*
+*N1Cc2ccccc2CC1
+
+Isothiazole
+# [c;R1]1[$([c;R1]);!$(c=*)]nsc1
+[c;R1]1{c2}nsc1
+n1sccc1
+
+Isoxazole
+# [c;R1]1[$([c;R1]);!$(c=*)][n+0]o[$([c;R1]);!$(c=*)]1
+[c;R1]1{c2}[n+0]o{c2}1
+n1occc1
+
+Isoxazole,4,5 dihydro
+# [$([C;R1]);!$(C=*)]1[$([C;R1]);!$(C=*)]C=NO1
+{C1}1{C1}C=NO1
+C1=NOCC1
+
+Ivermectin analogs
+C5CC~CC4(CC1CC(CC=CCCC=CC=C2COC3CC=CC(CO1)C23)O4)O5
+*C1CCCC2(O1)OC3CC=CC(*)CC=CC=C4COC5CC=CC(C45)C(=O)OC(C3)C2
+
+Josamycin analogs
+C1C(CC=O)CCC(~O)C=CC=CCCOC(~O)CC(O)C1
+*OC1C(CC=O)CCC(=O)C=CC=CCCOC(=O)CC(O*)C1
+
+Ketoamide (alpha, N-subst.)
+{C}[C;R0](=O)[C;R0](=O)[N;H1;R0]{C}
+*C(=O)C(=O)N*
+
+Ketoamide (beta, N-subst.)
+{C}[C;R0](=O)[C;H2][C;R0](=O)[N;H1;R0]{C}
+*C(=O)CC(=O)N*
+
+Ketopiperazine (antiaggregant)
+# [N;R1]1C(=O)[$([C;R1]);!$(C=*)][N;R1][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N;R1]1C(=O){C1}[N;R1]{C1}{C1}1
+*N1C(=O)CN(*)CC1
+
+Lavendamycin analogs
+n1c2C(=O)C(*)=CC(=O)c2ccc1c1nc(*)cc2c3ccccc3[nH]c12
+n1c2C(=O)C(*)=CC(=O)c2ccc1c1nc(*)cc2c3ccccc3[nH]c12
+
+Linoleyl
+# [C;R0][CH2][CH2][CH2][CH2][CH2][CH]=[CH][CH2][CH]=[CH][CH2][CH2][CH2][CH2][C;R0]
+[C;R0]{[CH2]x5}[CH]=[CH][CH2][CH]=[CH]{[CH2]x4}[C;R0]
+CCCCCCCC=CCC=CCCCCC
+
+Lysergic acid/amides
+C(=O)C1C-,=C2c3cccc4ncc(c34)CC2NC1
+*C(=O)C1C=C2c3cccc4n(*)cc(c34)CC2N(*)C1
+
+Lysine analogs (incl. peptides)
+[N;H2][C;H2][C;H2][C;H2][C;H2]C(N)C(=O)
+NCCCCC(N*)C(=O)*
+
+Macrocycles
+# [#6,#7,#8;r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43,r44,r45,r46,r47,r48,r49,r50]
+[#6,#7,#8;r{10,50}]
+C1*C*C*C*C*C*C*1
+# bug prevents this from matching? 8,8-DIBENZO-48-CROWN-16-ETHER
+
+Macrolide antibiot
+# [C;R1;r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43,r44,r45,r46,r47,r48,r49,r50][$([C;R1](=O)),$([C;R1]=[C;R1][C;R1][O;R0]),$([C;R1]=[C;R1][C;R1][C;R1][O;R0]),$([C;R1][C;R1]=[C;R1]),$([C;R1]=[N;R1]),$([C;R1][O,N;R1][C;R1][C;R1][O,N;R1]),$([N,S,O;R1][C;R1]=[N,S,O;R0])]
+[C;R1;r{10,50}][$([C;R1](=O)),$([C;R1]=[C;R1][C;R1][O;R0]),$([C;R1]=[C;R1][C;R1][C;R1][O;R0]),$([C;R1][C;R1]=[C;R1]),$([C;R1]=[N;R1]),$([C;R1][O,N;R1][C;R1][C;R1][O,N;R1]),$([N,S,O;R1][C;R1]=[N,S,O;R0])]
+C1CC*CC**CC1
+
+Macrolide antifungals
+N1CCCC1[C;R1][N;R1][C;R1][C;R1][N;R1][C;R1][C;R]N2CCCC2
+C(=O)NC3CC(O)C(O)NC(=O)C1C(O)C(C)CN1C(=O)C(NC(=O)C(NC(=O)C2CC(O)CN2C(=O)C(NC3=O)C(C)O)C(O)C(O)c4ccc(O)cc4)C(O)CC(N)=O
+
+Macrolide disulfide linkage
+# [S;X2;r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30][S;X2]
+[S;X2;r{11,30}][S;X2]
+C1CC*CCSSCC1
+
+Macrolide polypeptide 
+# [C;R1;r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43,r44,r45,r46,r47,r48,r49,r50]C(=O)[N;R1]CC(=O)[N;R1]CC(=O)[N;R1]CC(=O)[N;R1]
+[C;R1;r{12,50}]C(=O)[N;R1]CC(=O)[N;R1]CC(=O)[N;R1]CC(=O)[N;R1]
+C1C(=O)NCC(=O)NCC(=O)NCC(=O)N*CC(=O)N1
+
+Malononitrile, benzal analogs
+[C;D2]=C(C#N)C#N
+c1ccccc1C=C(C#N)C#N
+
+Maleimides (NH)
+[N;H1]1C(=O)C=[C;R1]C1=O
+C1=CC(=O)NC1=O
+
+Maleimides (N-subs)
+*N1C(=O)C=[C;R1]C1=O
+*N1C(=O)C=CC1=O
+
+Maytansine analogs
+C3C=CC=CCc1cccc(c1)NC(=O)C-,=CC2OC2CC4CC3NC(=O)O4
+*N1c2cccc(c2)CCCCCCC3NC(=O)OC(C3)CC4OC4CCC1=O
+
+Methamphetamine analogs
+{C}[N;H1;R0][C;R0]({C})[CH2]a1[a;R1][a;R1][a;R1][a;R1]a1
+*NC(C*)Cc1ccccc1
+
+Methotrexates
+n1c2c(N)nc(N)nc2ncc1CN(C)c1ccc(cc1)*
+n1c2c(N)nc(N)nc2ncc1CN(C)c1ccc(cc1)*
+
+Methotrexate,7,8-Dihydro
+C1Nc2c(N)nc(N)nc2N=C1CN(C)c1ccc(cc1)*
+C1Nc2c(N)nc(N)nc2N=C1CN(C)c1ccc(cc1)*
+# probably based on wrong parent from QSAR: S4526
+
+Methylenedioxybenzene
+C2Oc1c[c;R1][c;R1]cc1O2
+O1COc2ccccc12
+
+Mifepristones (anti-progestins)
+c1cc(*)ccc1C1C2=C3CCC(=O)C=C3CCC2C4CCC(O)(*)C4(C)C1
+c1cc(*)ccc1C1C2=C3CCC(=O)C=C3CCC2C4CCC(O)(*)C4(C)C1
+
+Mitomycin analogs
+[N,C]1C2[#6]3[#6][#6]4~[#6](C(=O)C=CC4=O)[#7]3CC12
+*N1C2C3(*)C(COC(=O)N)C4=C(C(=O)C=CC4=O)N3CC12
+
+Morphinan-6-ones (N-subs)
+*N1CCC23CCCCC2C1C(=O)c4ccc(*)cc34
+*N1CCC23CCCCC2C1C(=O)c4ccc(*)cc34
+
+Morphinans (N-subs)
+# [N+0;H0]1CC[C;R3]23C[$([C;R1]);!$(C=*)]CCC2C1[$([C;R1]);!$(C=*)]c4ccccc34
+[N+0;H0]1CC[C;R3]23C{C1}CCC2C1{C1}c4c[c;R1][c;R1][c;R1]c34
+*N1CCC23CCCCC2C1Cc4ccc(*)cc34
+
+Morphine analogs (including codeine, heroin)
+c1ccc2CC3NCCC45C3~[#6]~[#6]~[#6]~C4~Oc1c25
+*Oc1ccc2CC3N(*)CCC45C3C=CC(O*)C4Oc1c25
+
+Morpholine (1H)
+# [N+0;H1;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][O;R1][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+0;H1;R1]1{C1}{C1}[O;R1]{C1}{C1}1
+[NH]1CCOCC1
+
+Morpholine (1-subs)
+# [N+0;H0;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][O;R1][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+0;H0;R1]1{C1}{C1}[O;R1]{C1}{C1}1
+*N1CCOCC1
+
+Naltrindoles (opioid agonists)
+Oc1ccc2CC6N(CCC37C(Oc1c23)c5[nH]c4ccccc4c5CC67O)CC8CC8
+Oc1ccc2CC6N(CCC37C(Oc1c23)c5[nH]c4ccccc4c5CC67O)CC8CC8
+
+Nandrolone analogs
+# O[C;R1]1[$([C;R1]);!$(C=*)][C;R1]C2C3[C;R1][C;R1]C4=CC(=O)CC[C;D3]4[C;D3]3[CH2][CH2]C12C
+O[C;R1]1{C1}[C;R1]C2C3[C;R1][C;R1]C4=CC(=O)CC[C;D3]4[C;D3]3[CH2][CH2]C12C
+OC1C2(C)CCC3C4CCC(=O)C=C4CCC3C2CC1
+
+Naphthalene
+# [$([c;R1]);!$(c=*)]1c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+{c2}1c2{c2}{c2}{c2}{c2}c2{c2}{c2}{c2}1
+c1c2ccccc2ccc1
+
+Naphthalene sulfonic acids
+# [$([c;R1]);!$(c=*)]1c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1 and [OH]S(=O)(=O)c[$([c;R2]),$([c;R1][c;R2])]
+[OH]S(=O)(=O)c[$([c;R2]),$([c;R1][c;R2])] and {c2}1c2{c2}{c2}{c2}{c2}c2{c2}{c2}{c2}1
+OS(=O)(=O)c1cc2ccccc2c(*)c1
+
+Naphthalene,1,2,3,4-tetrahydro
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]c1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([C;R1]);!$(C=*)]2
+{C1}2{C1}{C1}c1{c2}{c2}{c2}{c2}c1{C1}2
+C1CCCc2ccccc12
+
+Naphthalene-1,8-dicarboximide (N-subs)
+# [#7]1[#6](=O)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c3c[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c([#6]1=O)c23
+[#7]1[#6](=O)c2{c2}{c2}{c2}c3c{c2}{c2}c([#6]1=O)c23
+*N1C(=O)c2cccc3cccc(C1=O)c23
+
+Naphthoquinone (1,4)
+# O=C1[C;R1]=[C;R1]C(=O)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+O=C1[C;R1]=[C;R1]C(=O)c2{c2}{c2}{c2}{c2}c12
+O=C1C=CC(=O)c2ccccc12
+
+1,8-Naphthyridine
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)]nc1n[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([c;R1]);!$(c=*)]2
+{c2}2{c2}nc1n{c2}{c2}{c2}c1{c2}2
+n1cccc2cccnc12
+
+1,8-Naphthyridine-1,2,3,4-tetrahydro
+# [$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)][N;H1]c1n[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1[$([C;R1]);!$(C=*)]2
+{C1}2{C1}[N;H1]c1n{c2}{c2}{c2}c1{C1}2
+N1CCCc2cccnc12
+
+1,8-Naphthyridine-2-one, (1-subs)
+c1ccnc2n({C})c(=O)[c;R1][c;R1]c12
+*n1c(=O)ccc2cccnc12
+
+1,8-Naphthyridine-1H-4-one
+O=c1cc[n;H1]c2n[c;R1][c;R1]cc12
+[nH]1ccc(=O)c2cccnc12
+
+1,8-Naphthyridine-4-one (1-subs)
+O=c1[c;R1][c;R1][n;H0]c2n[c;R1][c;R1]cc12
+*n1ccc(=O)c2cccnc12
+
+Nickel
+[Ni]
+*[Ni]*
+
+Nicotinic acids/esters
+# O[C;R0](=O)c1[$([c;R1]);!$(c=*)][$([n;R1]);!$(n=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c1
+O[C;R0](=O)c1{c2}{n2}{c2}{c2}c1
+*OC(=O)c1cnccc1
+
+Nicotinic amides (N-subs)
+# {C}[N;H1]C(=O)c1[$([c;R1]);!$(c=*)][n+0][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+[N;H1]C(=O)c1{c2}[n+0]{c2}{c2}{c2}1
+*NC(=O)c1cnccc1
+
+Nicotinic amides-iso (N-subs)
+{C}[N;H1]C(=O)c1[c;D2][c;D2]n[c;D2][c;D2]1
+n1ccc(cc1)C(=O)N*
+
+Nitrates
+{C}[O;H0]N(=O)=O
+*ON(=O)=O
+
+Nitriles
+[C;H1,H2]C#N
+*CC#N
+
+Nitro
+N(=O)=O
+*N(=O)=O
+
+Nitro-diazo dyes
+O=N(=O)c1cc(*)c(cc1)N=Nc2ccc(*)cc2
+O=N(=O)c1cc(*)c(cc1)N=Nc2ccc(*)cc2
+
+Nitrofuran (5-) (antibiotics)
+o1c(*)ccc1N(=O)=O
+o1c(*)ccc1N(=O)=O
+
+Nitroguanidyl
+*[N;H1]C(=[N;H1])[N;H1]N(=O)=O
+*NC(=N)NN(=O)=O
+
+2-Nitroimidazole (1-subst)
+*~n1c(N(=O)=O)ncc1
+*n1c(N(=O)=O)ncc1
+
+5-Nitroimidazole (1-subst)
+[#7]1({C})c[#7]cc1N(=O)=O
+*n1cncc1N(=O)=O
+
+Nitrosourea (antineoplastics)
+*[NH]C(=O)N(N=O)*
+*NC(=O)N(N=O)*
+
+Norborn/ane/ene-dicarboximide
+N1C(=O)C2C3C-,=CC(C3)C2C1=O
+*N1C(=O)C2C3CCC(C3)C2C1=O
+
+Norbornene
+C1[C;R2]2C=CC1[C;R1]C2
+*C1C2C=CC1CC2*
+# [C;R2]1[C;R2]2[C;R1]=[C;R1][C;R2]1[C;R1][C;R1]2 # more specific
+
+Oleyl
+# [C;R0][CH2][CH2][CH2][CH2][CH2][CH2][CH2][CH]=[CH][CH2][CH2][CH2][CH2][CH2][CH2][C;R0]
+[C;R0]{[CH2]x7}[CH]=[CH]{[CH2]x6}[C;R0]
+CCCCCCCCC=CCCCCCCC*
+
+Ovalicin analogs (anti-angiogenics)
+C1OC1C1CCCCC12CO2
+*C1OC1C1(*)CC(*)CCC12CO2
+
+Oxadiazole (1,2,4)
+# [$([c;R1]);!$(c=*)]1n[$([c;R1]);!$(c=*)]on1
+{c2}1n{c2}on1
+*c1nc(*)on1
+
+Oxadiazole (1,3,4)
+# [$([c;R1]);!$(c=*)]1nn[$([c;R1]);!$(c=*)]o1
+{c2}1nn{c2}o1
+o1cnnc1
+
+Oxalate
+[O;D2]C(=O)C(=O)[O;D2]
+*OC(=O)C(=O)O*
+
+Oxamate
+[O;D2]C(=O)C(=O)[N;D2]
+*OC(=O)C(=O)N*
+
+Oxazole
+# [$([n;R1]);!$(n=*)]1[$([c;R1]);!$(c=*)]o[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+{n2}1{c2}o{c2}{c2}1
+n1cocc1
+
+Oxazole,4,5-dihydro
+# *C1=NO[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*C1=NO{C1}{C1}1
+*C1=NOCC1
+
+Oxazolidine
+# [N;R1;H0]1[$([C;R1]);!$(C=*)]O[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N;R1;H0]1{C1}O{C1}{C1}1
+*N1COCC1
+
+Oxazolidinedione (3H)
+C1OC(=O)[N;H1]C1=O
+*C1(*)OC(=O)NC1=O
+
+Oxazolidinedione (3-subs)
+# [N;H0]1C(=O)O[$([C;R1]);!$(C=*)]C1=O
+[N;H0]1C(=O)O{C1}C1=O
+*N1C(=O)OCC1=O
+
+Oxazolidinone (N-subs)(cyclo-carbamate) (antibiotics)
+*N1C(=O)OCC1
+*N1C(=O)OCC1
+
+Oxazolo pyridines
+n1c(*)oc2ncccc12 or n1c(*)oc2cccnc12
+n1c(*)oc2ncccc12.n1c(*)oc2cccnc12
+
+Oximes (aldo,OH)
+[#6][C;H1]=N[OH]
+*C(=N[OH])
+
+Oximes (keto,OH)
+[C;R0](C)(C)(=N[OH])
+*C(=N[OH])*
+
+Oxime,O-alkyl/aryl
+{C}ON=[C;H1]{C} or {C}ON=C({C}){C} or [OH]N=[C;H1]{C} or [OH]N=C({C}){C}
+*CON=C(*)*
+# original SMARTS target was [C;R0]ON=C, then updated to [C;D1,D2]ON=C
+
+Oxindoles
+O=C2Cc1ccccc1N2
+O=C2Cc1ccccc1N2
+
+Oxirane (epoxides)
+[C;R1]1O[C;R1]1
+*C1OC1
+
+Oxytocin analogs
+C1C(=O)NCC(=O)NCC(=O)NCC(=O)NCCSSCCC(=O)N1
+*C1C(=O)NCC(=O)NCC(=O)NCC(=O)NCCSSCCC(=O)N1
+
+PCBs
+[$(c:cCl),$(c:c:cCl),$(c:c:c:cCl)]-[$(c:cCl),$(c:c:cCl),$(c:c:c:cCl)]
+Clc1c(*)ccc(*)c1c2c(*)ccc(Cl)c2
+
+Penams (antibiotics)
+# N1(C(=O)[$([C;R1]);!$(C=*)]2)C2S-,=C-,=C1
+N1(C(=O){C1}2)C2S-,=C-,=C1
+*C1N2C(=O)C(*)C2SC1*
+
+Penem (antibiotics)
+# [$([C;R1]);!$(C=*)]1C(=O)N2C(C(=O))=[C;R1]CC12
+{C1}1C(=O)N2C(C(=O))=[C;R1]CC12
+*C1C(=O)N2C(C(=O)*)=C(*)CC12
+
+Penicillins (antibiotics)
+C(=O)NC1C(=O)N2C(C(=O)O)C(C)(C)SC12
+*C(=O)NC1C(=O)N2C(C(=O)O)C(C)(C)SC12
+
+Pentacene (and hetero analogs)
+*5~*~[*;R1]~*4~*~*3~*~*2~*~*1~[*;R1]~*~*~[*;R1]~*1~*~*2~*~*3~*~*4~[*;R1]5
+*5***4**3**2**1*****1**2**3**4*5
+
+Peridol-type (anti-psychotics)
+CN1[C;R1][C;R1]C([C;R1][C;R1]1)([OH])c2ccccc2
+*CN1CCC(CC1)(O)c1ccccc1
+
+Peroxide-hindered aliphatic
+COO[C;D4]
+*COOC(*)(*)*
+
+1,10-Phenanthroline
+# c1c[n+0]c2c([$([c;R1]);!$(c=*)]1)[c;R1][c;R1]c3[$([c;R1]);!$(c=*)]cc[n+0]c23
+c1c[n+0]c2c({c2}1)[c;R1][c;R1]c3{c2}cc[n+0]c23
+n1cccc2ccc3cccnc3c12
+
+Phenazine
+# [n+0;H0]1c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[n+0;H0]c3[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c13
+[n+0;H0]1c2{c2}{c2}{c2}{c2}c2[n+0;H0]c3{c2}{c2}{c2}{c2}c13
+n1c2ccccc2nc3ccccc13
+
+Phencyclidines (PCP, hallucinogens)
+C1CCN(CC1)C2(CCCCC2)c3ccccc3
+C1CCCCN1C2(c3ccccc3)CCCCC2
+
+Phenol,2,6-di-t-butyl
+[CH3]C([CH3])([CH3])c1cccc(c1[OH])C([CH3])([CH3])[CH3]
+Oc1c(C(C)(C)C)cccc1C(C)(C)C
+
+Phenothiazine (N-subst)
+[N;D3]1c2ccccc2Sc3ccccc13
+*N1c2ccccc2Sc3ccccc13
+
+o-Phenylene-urea
+O=c2[nH]c1ccccc1[nH]2
+N1C(=O)Nc2ccccc12
+
+Phosphocholine (inner salt)
+OP(=O)([O-])OCC[N+]
+*OP(=O)([O-])OCC[N+](*)(*)*
+
+Phosphonic acids
+[!O]P(=O)([OH])[OH]
+*P(=O)(O)O
+
+Phosphoramides
+[N;H1]P(=O)(O*)O*
+*NP(=O)(O*)O*
+
+Phosphoramidothioates
+OP(N)(=O)S
+*OP(N)(=O)S*
+
+Phosphoric acids (di-, tri-)
+[O+0;H0]P(=O)([OH])OP(=O)([OH])[OH]
+#[O+0;H0]P(=O)([OH])[OH]
+*OP(=O)(O)OP(=O)(O)O
+
+Phosphoric acid (mono)
+{C}[O;H0]P(=O)([OH])[OH]
+*OP(=O)(O)O
+
+Phosphoric esters
+[O;H0]P(=O)([O;H0])[O;H0]
+*OP(=O)(O*)O*
+
+Phosphor/ic/ous cyclic esters
+[!O][P;R1](=O)([O;R1])([O;R1])
+*P1OCCCO1
+
+Phosphoro-thiotic esters & amides
+*[O;R0]P(=S)([O;R0]*)*
+*OP(=S)(O*)*
+
+Phthalan
+# [$([C;R1]);!$(C=*)]1O[$([C;R1]);!$(C=*)]c2c[c;R1][c;R1][c;R1]c12
+{C1}1O{C1}c2c[c;R1][c;R1][c;R1]c12
+C1OCc2ccccc12
+
+Phthalazinone, 1-(2H)
+# [n;H0]2n[$([c;R1]);!$(c=*)]c1ccccc1c2=O
+[n;H0]2n{c2}c1ccccc1c2=O
+n1n(C)c(=O)c2ccccc2c1
+
+Phthaleins (phenolphthalein analogs)
+O1C(=O)c2ccccc2[C;R1]1(c1ccccc1)c1ccccc1
+O1C(=o)c2ccccc2C1(c1ccc(*)cc1)c1ccc(*)cc1
+
+Phthalic anhydrides
+O=C1OC(=O)c2ccccc12
+O=C1OC(=O)c2ccccc12
+
+Phthalimide,N-subs
+*N1C(=O)c2c[c;R1][c;R1][c;R1]c2C1=O
+*N1C(=O)c2ccccc2C1=O
+
+Phthalimide (tetrahydro;N-subs)
+*N1C(=O)C2=C(CCCC2)C1=O
+*N1C(=O)C2=C(CCCC2)C1=O
+
+Pinane
+# CC1(C)C2[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]C([C,N])C1C2
+CC1(C)C2{C1}{C1}C([C,N])C1C2
+CC1(C)C2CCC(C*)C1C2
+
+Pipecolinyl analogs
+OC(=O)C1CCCCN1C=O
+OC(=O)C1CCCCN1C=O
+
+Piperazine (1,4-subs)
+# [N;R1;H0,H1]1[$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)][N;R1;H0,H1][$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)]1
+[N;R1;H0,H1]1{C5}{C5}[N;R1;H0,H1]{C5}{C5}1
+*N1CCN(*)CC1
+
+Piperazine-2,3-dione (1,4-subs)
+*N1C(=O)C(=O)N(*)CC1
+*N1C(=O)C(=O)N(*)CC1
+
+Piperazine-2,5-dione
+[N;R1]1C(=O)[C;R1]NC(=O)[C;R1]1
+*N1C(=O)CNC(=O)C1
+
+Piperazine-2,6-dione (1,4-subs)
+*N1C(=O)CN(*)CC1=O
+*N1C(=O)CN(*)CC1=O
+
+Piperazine,N-o-methoxyphenyl (antag. serotonin, adrenergic etc)
+# *N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]N([$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1)c2ccccc2[O;R0][C;H2,H3]
+*N1{C1}{C1}N({C1}{C1}1)c2ccccc2[O;R0][C;H2,H3]
+*N1CCN(CC1)c2ccccc2OC
+
+Piperidine carbamate
+[C;R1]1[C;R1][C;R1][C;R1][C;R1]N1C(=O)O*
+C1CCCCN1C(=O)O*
+
+Piperidine, 1H
+# [N+0H1;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=O)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+0H1;R1]1{C1}{C1}{C5}{C1}{C1}1
+[NH]1CCCCC1
+
+Piperidine, 1-subst.
+# [N+0;H0;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+0;H0;R1]1{C1}{C1}{C1}{C1}{C1}1
+*N1CCCCC1
+
+Piperidine, spiro
+# [N+0;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][C;H0;R2][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+0;R1]1{C1}{C1}[C;H0;R2]{C1}{C1}1
+*N1CCC(*)(*)CC1
+
+Piperidine,3-(benzylamino) (neurokinin antag.)
+# [$([C;R1]);!$(C=*)]1[$([C;R1]);!$(C=*)]N[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]([$([C;R1]);!$(C=*)]1)[N;H1][C;H2]c2c[c;R1][c;R1][c;R1]c2
+{C1}1{C1}N{C1}{C1}({C1}1)[N;H1][C;H2]c2c[c;R1][c;R1][c;R1]c2
+C1NCCCC1NCc1ccccc1
+
+Piperidine,N-benzoyl
+# O=C(N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1)c2c[c;R1][c;R1]cc2
+O=C(N1{C1}{C1}{C1}{C1}{C1}1)c2c[c;R1][c;R1]cc2
+C1CCN(CC1)C(=O)c2ccccc2
+
+Piperidine,2,6-dione
+# N1C(=O)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]C1=O
+N1C(=O){C1}{C1}{C1}C1=O
+N1C(=O)CCCC1=O
+
+Piperidine,3-carboxy-4-hydroxy-4-phenyl (anti-neoplastic etc.)
+*N1CC(C(=O)*)C(O)(CC1)c2ccccc2
+*N1CC(C(=O)*)C(O)(CC1)c2ccccc2
+
+4-Piperidinylidene
+CN1CCC(=C)CC1
+CN1CCC(=C)CC1
+
+Piperidiniums
+# *[N+1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*[N+1]1{C1}{C1}{C1}{C1}{C1}1
+*[N+1]1CCCCC1
+
+Pirquinazols
+O=c2[nH]c1ccccc1c3ccnn23
+n1n2c(=O)[nH]c3ccccc3c2cc1
+
+Platinum
+[Pt]
+*[Pt]*
+
+Podophyllotoxins (antineoplastics)
+O=C3OCC4Cc2cc1OCOc1cc2C(C34)c5ccccc5
+c1ccccc1C1C2C(=O)OCC2Cc3cc4OCOc4cc13
+
+Polyoxyethylene (3 or more)
+{C}[CH2;R0]O[CH2][CH2]O[CH2][CH2][O;R0]{C}
+*COCCOCCOCC*
+
+Prednisones
+CC(=O)C1(O)C2(C)CC(=O)C3C4(C)C=CC(=O)C=C4CCC3C2CC1
+*CC(=O)C1(O*)C2(C)CC(=O)C3C4(C)C=CC(=O)C=C4CCC3C2CC1
+
+Prednisolones
+CC1([O;R0])C2(C)CC(O)[C;H1]3C4(C)C=CC(=O)C=C4CCC3C2CC1
+*CC1(O*)C2(C)CC(O)C3C4(C)C=CC(=O)C=C4CCC3C2CC1
+
+Proline (in combi.)
+*N1[C;R1][C;R1][C;R1][C;R1]1C(=O)*
+*N1CCCC1C(=O)*
+# definitely needs work
+
+Proline peptides
+*C(=O)N1[C;R1][C;R1][C;R1][C;R1]1C(=O)[N;H]*
+*C(=O)N1CCCC1C(=O)N*
+
+Propynyl ethers
+{C}O[C;H2]C#C
+*OCC#C*
+
+Proxifan anti-histamines
+[nH]1cnc(c1)CCC[O;H0]
+[nH]1cnc(c1)CCCO*
+
+Psoralens
+O=c3ccc2cc1ccoc1cc2o3
+o1ccc2cc3ccc(=O)oc3cc12
+
+Pteridine
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)]nc1n[$([c;R1]);!$(c=*)]n[$([c;R1]);!$(c=*)]c1n2
+{c2}2{c2}nc1n{c2}n{c2}c1n2
+n1cncc2nccnc12
+
+Purine (9H)
+# [$([c;R1]);!$(c=*)]2[n;R1][$([c;R1]);!$(c-N);!$(c=*)]c1[$([n;H0;X2]),$([nH])][$([c;R1]);!$(c=*)][$([n;H0;X2]),$([nH])]c1[n;R1]2
+{c2}2[n;R1][$([c;R1]);!$(c-N);!$(c=*)]c1{n3}{c2}{n3}c1[n;R1]2
+[nH]1cnc2ncncc12
+
+Purine (9-subs)
+# [n;H0]1[$([c;R1]);!$(c=*)][n;H0;R1]c2[$([c;R1]);!$(cN);!$(c=*)][n;R1][$([c;R1]);!$(c=*)][n;R1]c12
+[n;H0]1{c2}[n;H0;R1]c2[$([c;R1]);!$(cN);!$(c=*)][n;R1]{c2}[n;R1]c12
+*n1cnc2cncnc12
+# [n;H0]1{c2}[n;D3]c2[$([c;R1]);!$(cN);!$(c=*)][n;R1]{c2}[n;R1]c12 # bad: H0;R1 vs D3
+
+Pyran(ose)
+# [$([C;R1]);!$(C=O)]1[$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)][$([O;R1]);!$(O1CC1)][$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)]1
+{C5}1{C5}{C5}[$([O;R1]);!$(O1CC1)]{C5}{C5}1
+O1CCCCC1
+
+Pyrano[2,3d]pyridine
+# C2COc1n[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]cc1C2
+C2COc1n{c2}{c2}cc1C2
+n1cccc2CCCOc12
+
+4-Pyranone
+O=c1{c2}{c2}o{c2}{c2}1
+O=c1ccocc1
+
+Pyran-2-one,4-hydroxy-5,6-hexamethylene
+*c1c(O)c2CCCCCCc2oc1=O
+*c1c(O)c2CCCCCCc2oc1=O
+
+Pyrazine
+# [$([c;R1]);!$(c=*)]1[$([c;R1]);!$(c=*)][n;R1][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][n;R1]1
+{c2}1{c2}[n;R1]{c2}{c2}[n;R1]1
+n1ccncc1
+
+Pyrazole (1H)
+# [$([c;R1]);!$(c=*)]1[$([c;R1]);!$(c=*)][n;H0;R1][n;H1;R1][$([c;R1]);!$(c=*)]1
+{c2}1{c2}[n;H0;R1][n;H1;R1]{c2}1
+[nH]1nccc1
+
+Pyrazole (1-subs)
+*[#7;H0;R1;X3]1[#7;H0;X2;R1][#6;R1][#6;R1][#6;R1]1
+*n1nccc1
+
+Pyrazole,4,5-dihydro
+# [N;R1]1[N;R1]=C[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N;R1]1[N;R1]=C{C1}{C1}1
+*N1N=C(*)CC1
+
+3-Pyrazolidinone
+# *[N;R1]1[N;R1]C(=O)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*[N;R1]1[N;R1]C(=O){C1}{C1}1
+*N1NC(=O)CC1
+
+2-Pyrazoline-1-carboxamide (insecticide, cockroach)
+NC(=O)N1N=CCC1
+*NC(=O)N1N=CCC1
+
+Pyrazol-4-ylidene,1,5-dihydro-5-oxo
+*=C1C=NN(*)C1=O
+*=C1C=NN(*)C1=O
+
+Pyrazolo[3,4,5-kl]acridine
+c1c2[nH]c3ccccc3c4nn(*)c(c24)cc1
+c1c2[nH]c3ccccc3c4nn(*)c(c24)cc1
+
+Pyrazol-5-one,4,5-dihydro
+N1N=C[$(C);!$(C=*)]C1=O
+*N1N=C(*)CC1=O
+
+3-Pyrazolone, (1,2-disubst.)
+# *[n;H0;R1]1[n;H0;R1](*)c(=O)[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+*[n;H0;R1]1[n;H0;R1](*)c(=O){c6}{c6}1
+*n1n(*)c(=O)cc1
+
+Pyrazolo[1,5a]pyrimidine
+# [c;R1]2[c;R1]nc1ccnn1[$([c;R1]);!$(c=*)]2
+[c;R1]2[c;R1]nc1ccnn1{c2}2
+n1n2cccnc2cc1
+
+Pyrazolopyridine (1H)
+[c;R1]2[c;R1]nc1[nH]ncc1[c;R1]2
+[nH]1ncc2cccnc12
+
+Pyrazolo[3,4-b]pyridine (1-subst.)
+# [c,C][n;R1]1n[$([c;R1]);!$(c=*)]c2[c;R1][c;R1][c;R1]nc12
+[c,C][n;R1]1n{c2}c2[c;R1][c;R1][c;R1]nc12
+*n1ncc2cccnc12
+# the target written to work around a fussiness in O.B.
+
+Pyrazolopyrimidine
+# [$([c;R1]);!$(c=*)]2n[$([c;R1]);!$(c=*)]c1cn[nH]c1n2
+{c2}2n{c2}c1cn[nH]c1n2
+[nH]1ncc2cncnc12
+
+Pyrazolopyrimidine-7-one (Viagra analogs)
+[n;H0]1[n;H0]cc2[n;H0,H1]c[n;H0,H1]c(=O)c12
+*n1ncc2nc[nH]c(=O)c12
+
+Pyrazolo[4,3,e]triazolo[1,5,c]pyrimidine (adenosine antagonists)
+n1n(C)c2ncn3ncnc3c2c1 or Cn1nc2ncn3ncnc3c2c1
+*n1nc2ncn3ncnc3c2c1
+
+Pyrazolo[3,4-d]pyrimidine (1-subst.)
+# {C}n1ncc2[$([c;R1]);!$(c=*)]ncnc12
+{C}n1ncc2{c2}ncnc12
+*n1ncc2cncnc12
+
+Pyrazone [1-subs]
+[C,O,N]-n1c(=O)c[n;H0;D2][c;R1][c;R1]1
+*n1c(=O)cncc1
+
+Pyrethroids
+*C(*)=CC1C(C)(C)C1C(=O)OC
+*C(*)=CC1C(C)(C)C1C(=O)OC*
+
+Pyridazine
+# [$([c;R1]);!$(c=*)]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][n+0][n+0][$([c;R1]);!$(c=*)]1
+{c2}1{c2}{c2}[n+0][n+0]{c2}1
+n1ncccc1
+
+Pyridazin-3-one
+# O=c1[c;R1][c;R1][$([c;R1]);!$(c=*)]n[nH]1
+O=c1[c;R1][c;R1]{c2}n[nH]1
+[nH]1c(=O)cccn1
+
+Pyridazin-3-one,2,4,5-trihydro
+*C1=N[N;H1]C(=O)C[C;R1]1
+*C1=NNC(=O)CC1
+
+Pyridine
+# [$([c;R1]);!$(c=O)]1[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][n;H0;X2][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+{c6}1{c6}{c6}[n;H0;X2]{c6}{c6}1
+n1ccccc1
+
+Pyridine,1,2,5,6-tetrahydro
+# [N+0]1[$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)]=[$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)][$([C;R1]);!$(C=O)]1
+[N+0]1{C5}{C5}={C5}{C5}{C5}1
+*N1CC(*)=CCC1
+
+Pyridine-N-oxide
+[O-][n+1]1[c;R1][c;R1][c;R1][c;R1][c;R1]1
+O=n1ccccc1
+
+Pyridiniums
+# [c,n,C,N,Pt]~[n+]1[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+[c,n,C,N,Pt]~[n+]1{c6}{c6}{c6}{c6}{c6}1
+*[n+]1ccccc1
+
+4-Pyridone (1-sub)
+# *~[n;H0]1[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]c(=O)[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+*~[n;H0]1{c6}{c6}c(=O){c6}{c6}1
+*n1ccc(=O)cc1
+
+4-Pyridone,3-hydroxy (1-subs.; iron chelators)
+# *~[n;H0]1[$([c;R1]);!$(c=O)][$([c;R1]);$(c[OH])]c(=O)[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+*~[n;H0]1{c6}[$([c;R1]);$(c[OH])]c(=O){c6}{c6}1
+*n1cc(O)c(=O)cc1
+# SMARTS 'reduce' has a problem with the ']' in '[OH]'
+
+Pyridone (1,2; 1-sub)
+# *~[n;H0]1c(=O)[$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)][$([c;R1]);!$(c=O)]1
+*~[n;H0]1c(=O){c6}{c6}{c6}{c6}1
+*n1c(=O)cccc1
+
+Pyrido[2,3,b][1,4]benzodiazepin-6-one
+[#6][#7]1c2ncccc2[#7][#6](=O)c3ccccc13
+*N1c2ncccc2NC(=O)c3ccccc13
+# CN1c2ncccc2NC(=O)c3ccccc13 # worked prior to OpenBabel 2.3.0 release
+
+Pyrido[2,3,b]pyrazin-2,3-dione
+O=c2[nH]c1cccnc1[nH]c2=O
+N1C(=O)C(=O)Nc2ncccc12
+
+4H-Pyrido[1,2a]pyrimidin-4-one
+O=c1[c;R1][c;R1]nc2[c;R1][c;R1][c;R1]cn12
+n1c2ccccn2c(=O)cc1
+
+Pyrido[2,3d]pyrimidine
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)]nc1n[$([c;R1]);!$(c=*)]n[$([c;R1]);!$(c=*)]c1[$([c;R1]);!$(c=*)]2
+{c2}2{c2}nc1n{c2}n{c2}c1{c2}2
+n1cncc2cccnc12
+
+Pyrilium salts
+[#8+]1ccccc1
+*[o+]1ccccc1
+
+Pyrimidin-4-one
+# [$([n+0;H0,H1]);!$(n[C,c,N,O;R0])]1[$([c;R1]);!$(c=*)][$([n+0;H0,H1]);!$(n[C,c,N,O;R0])]c(=O)[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+{n1}1{c2}{n1}c(=O){c2}{c2}1
+[nH]1cnc(=O)cc1.n1c[nH]c(=O)cc1
+# that GW-1100 matches is a bug?
+
+Pyrimidin-4-one,1,4,5,6-tetrahydro
+C1=NC(=O)C[C;H2]N1
+*C1=NC(=O)CCN1
+
+Pyrimidin-2-thione,3,4-dihydro
+*N1C(=S)NC=CC1
+*N1C(=S)NC=CC1
+
+Pyrimidin-2,4-dione
+O=c1[c;R1][c;R1][nH]c(=O)[nH]1
+O=c1cc[nH]c(=O)[nH]1
+
+Pyrimidin-2-one
+O=c1n{c2}{c2}{c2}[nH]1
+O=c1nccc[nH]1
+
+Pyrimidine
+# [$([n+0;R1]);!$(n=*)]1[$([c;R1]);!$(c=*)][$([n+0;R1]);!$(n=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+{n2}1{c2}{n2}{c2}{c2}{c2}1
+n1cnccc1
+
+Pyrimidine,4,6-dimethoxy (herbicides)
+n1c(OC)cc(OC)n[c;R1]1
+n1c(OC)cc(OC)nc1*
+
+Pyrimidinyl salicylates (herbicides)
+n1cccnc1[O,S]c2ccccc2C(=O)O
+n1cccnc1Oc2ccccc2C(=O)O*
+
+Pyrrole
+[c;R1]1[c;R1][c;R1][n;R1;H1][c;R1]1
+c1cc[nH]c1
+
+Pyrrolidine (1-H)
+# [NH]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[NH]1{C1}{C1}{C1}{C1}1
+N1CCCC1
+
+Pyrrolidine (1-subs)
+# *~[N+0;R1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*~[N+0;R1]1{C1}{C1}{C1}{C1}1
+*N1CCCC1
+
+Pyrrolidiniums
+# [N+1]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[N+1]1{C1}{C1}{C1}{C1}1
+*[N+]1CCCC1
+
+2-pyrrolidinone (1H)
+# [NH]1C(=O)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[NH]1C(=O){C1}{C1}{C1}1
+N1C(=O)CCC1
+
+2-pyrrolidinone (1-subs)
+# *~[N;R1]1C(=O)[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*~[N;R1]1C(=O){C1}{C1}{C1}1
+*N1C(=O)CCC1
+
+Pyrrolizine,hexahydro
+# C2C[C;R2]1CC[$([C;R1]);!$(C=*)]N1[$([C;R1]);!$(C=*)]2
+C2C[C;R2]1CC{C1}N1{C1}2
+N12CCCC2CCC1
+
+Pyrrolo[2,3,b]indole,hexahydro (stigmines)
+N1[C;R2]2Nc3ccccc3[C;R2]2[C;R1][C;R1]1
+*N1C2N(*)c3ccccc3C2(*)CC1
+
+Pyrrolo[3,2,F]quinazoline
+[n;D3]1c2ccc3ncncc3c2cc1
+*n1c2ccc3ncncc3c2cc1
+
+Pyrrolo[2,1-f]-1,2,4-triazine
+c2cc1{C}ncnn1c2
+n1cnn2cccc2c1
+
+Quaternary alicyclic nitrogen
+[$([NX4+;R1])]
+C1[N+](C)(C)CCCC1
+
+Quaternary Bromides
+[Br-] and [N+,n+]
+C[N+](C)(C)C.[Br-].[Br-].[n+]1ccccc1
+
+Quaternary Iodides
+[I-] and [N+,n+]
+C[N+](C)(C)C.[I-].[I-].c1[n+]cccc1
+
+Quinazoline,4-amino
+# [N;H1]c1ncnc2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[N;H1]c1ncnc2{c2}{c2}{c2}{c2}c12
+*Nc1ncnc2ccccc12
+
+Quinazoline,6,7-di-alkoxy (kinase inhib. etc.)
+n1cncc2cc(OC)c(OC)cc12
+n1cnc(*)c2cc(OC*)c(OC*)cc12
+
+2-Quinazolinone,dihydro (1-subs)
+[N;D3]1C(=O)NCc2ccccc12
+*N1C(=O)NCc2ccccc12
+
+4-Quinazolinone
+[n;H1]1c[n;D2]c(=O)c2[c;R1][c;R1][c;R1][c;R1]c12 or [n;D2]1c[n;H1]c(=O)c2[c;R1][c;R1][c;R1][c;R1]c12
+[nH]1cnc(=O)c2ccccc12.Hn1c(=O)c2ccccc2nc1
+
+4-Quinazolinone (3-subs)
+# [C,c,N,O][n;R1]2[$([c;R1]);!$(c=*)]nc1c[c;R1][c;R1][c;R1]c1c2=O
+[C,c,N,O][n;R1]2{c2}nc1c[c;R1][c;R1][c;R1]c1c2=O
+Cn1c(=O)c2ccccc2nc1
+
+4-Qinazolinone,3-benzyl (anti-hypertensives)
+O=c2n(Cc1ccccc1)cnc3ccccc23
+c1ccccc1Cn1c(=O)c2ccccc2nc1
+
+Quinines
+c4ccc3nccc(C(O)C1CC2CCN1CC2)c3c4
+*c4ccc3nccc(C(O)C1CC2CCN1CC2*)c3c4
+
+1-Quinoline
+# [$([c;R1]);!$(c=*)]2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][c;R2]1[n+0;R1][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][c;R2]1[$([c;R1]);!$(c=*)]2
+{c2}2{c2}{c2}[c;R2]1[n+0;R1]{c2}{c2}{c2}[c;R2]1{c2}2
+n1cccc2ccccc12
+
+Quinoline,1,2-dihydro
+# *[C;R1]1=[C;R1][C;R1](*)[NH]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+*[C;R1]1=[C;R1][C;R1](*)[NH]c2{c2}{c2}{c2}{c2}c12
+*C1=CC(*)Nc2ccccc12
+
+Quinoline-6,7-dimethoxy
+# [CH3]Oc2cc1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]nc1cc2O[CH3]
+[CH3]Oc2cc1{c2}{c2}{c2}nc1cc2O[CH3]
+n1cccc2cc(OC)c(OC)cc12
+
+Quinolin-5,8-dione
+O=C1[C;R1]=[C;R1]C(=O)c2ncccc12
+O=C1C=CC(=O)c2ncccc12
+
+Quinolin-4-one (N-subs)
+# [n;H0]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c(=O)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[n;H0]1{c2}{c2}c(=O)c2{c2}{c2}{c2}{c2}c12
+*n1ccc(=O)c2ccccc12
+
+1H-Quinolin-4-one-2,3-dihydro (oxime)
+# *N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]C(=NO*)c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+*N1{C1}{C1}C(=NO*)c2{c2}{c2}{c2}{c2}c12
+*N1CCC(=NO*)c2ccccc12
+
+Quinoline-1-oxide
+# [O-]-[n+]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[O-]-[n+]1{c2}{c2}{c2}c2{c2}{c2}{c2}{c2}c12
+O=n1cccc2ccccc12
+
+Quinoxaline-1,4-dihydro-2,3-dione (NMDA antag.)[3D]
+# [nH]1c(=O)c(=O)[nH]c2c[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[nH]1c(=O)c(=O)[nH]c2c{c2}{c2}{c2}c12
+[nH]1c(=O)c(=O)[nH]c2c(*)cccc12
+
+Quinoxalin-2-one (1-subs)
+# [n;H0]1c(=O)[$([c;R1]);!$(c=*)][n;R1]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[n;H0]1c(=O){c2}[n;R1]c2{c2}{c2}{c2}{c2}c12
+*n1c(=O)cnc2ccccc12
+
+Quinoxalin dioxide (antibiotics)
+# [O-]-[n+]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][n+](-[O-])c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c12
+[O-]-[n+]1{c2}{c2}[n+](-[O-])c2{c2}{c2}{c2}{c2}c12
+O=n1ccn(=O)c2ccccc12
+
+Quinuclidine
+# [$([C;R1]);!$(C=*)]1[$([C;R1]);!$(C=*)][N+0]2[$([C;R2]);!$(C=*)]CC1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]2
+{C1}1{C1}[N+0]2[$([C;R2]);!$(C=*)]CC1{C1}{C1}2
+C1CC2CCN1CC2
+
+Quinuclidinium
+# [$([C;R1]);!$(C=*)]1C[N+1]2[$([C;R2]);!$(C=*)]CC1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]2
+{C1}1C[N+1]2[$([C;R2]);!$(C=*)]CC1{C1}{C1}2
+C1CC2CC[N+](*)1CC2
+
+'..racteam' cognition enhancers
+C(=O)[CH2][N;R1]1C(=O)CCC1
+*C(=O)CN1C(=O)CCC1
+
+Rebeccamycins
+[n;R1]1c2[c,n]cccc2c3ccc5c6ccccc6[n,s;R1]c5c13
+O1C(CO)C(O)C(O)C(O)C1n1c2ccccc2c3c4C(=O)N(*)C(=O)c4c5c6ccccc6[nH]c5c13
+# should also match GO-6976
+
+Reserpine analogs
+C4~C[O,C]CC5CN3CCc1c([nH]c2ccccc12)C3CC45
+C4C*CC5CN3CCc1c([nH]c2ccccc12)C3CC45
+
+Retinoics
+*[c;R1]1[c;R1]cc2c(c1)C(C)(C)CCC2(C)C
+Cc1(C)CCC(C)(C)c2cc(*)ccc12
+
+Retinol analogs
+*C=C(C)C=CC=C(C)C=CC1=C(C)CCCC1(C)C
+*C=C(C)C=CC=C(C)C=CC1=C(C)CCCC1(C)C
+
+Riboflavin analogs
+*n1c2nc(=O)[nH]c(=O)c2nc3ccccc13
+*n1c2nc(=O)[nH]c(=O)c2nc3ccccc13
+
+Rifamycin analogs
+C1=CC=CCCCCCCCCC=COC4Oc3ccc2[#6]~[#6](NC1=O)~[#6]~[#6]c2c3C4
+*c1c2NC(=O)C=CC=CCCCCCCCCC=COC3C(=O)c4(c1)c(c2)ccc4O3
+
+Selenium
+[Se]
+*[Se]*
+
+#OBSOLETE angiotensin II inhib. (anti-hypertensives) [3D]
+#*Cc1ccc(cc1)c2ccccc2c3nnn[nH]3
+#*Cc1ccc(cc1)c2ccccc2c3nnn[nH]3
+
+Semicarbazides (oxo)
+*[N;R0][NH]C(=O)[N;H2] or [N;H2][NH]C(=O)[N;R0]*
+*NNC(=O)N*
+
+'-sentan' endothelin-A antagonists
+n1cccnc1OC(C(=O)O)[C;R0](c1ccccc1)(c2ccccc2)
+n1cccnc1OC(C(=O)O)C(c1ccccc1)(c2ccccc2)*
+
+Serotonin-5-ethers
+*Oc1ccc2[nH]cc([CH2][CH2][NH2])c2c1
+*Oc1ccc2[nH]cc(CCN)c2c1
+
+Silicon
+[Si]
+*[Si]*
+
+Siloxanes
+{C}[Si](*)(*)O*
+*[Si](*)(*)O*
+
+Spiro carbons (any size rings)
+# [C;X4;R2](@[r3,r4,r5,r6,r7,r8])(@[r3,r4,r5,r6,r7,r8])(@[r3,r4,r5,r6,r7,r8])@[r3,r4,r5,r6,r7,r8]
+[C;X4;R2](@[r{3,8}])(@[r{3,8}])(@[r{3,8}])@[r{3,8}]
+C1OCCC12CNCCC2
+
+Spiro-cyclopropyl
+[C;R2]1[C;R1][C;R1]1
+C1CC12C***C2
+
+Spiro-butenolactone
+O1C(=O)C=CC1([#6;R]*)[#6;R]*
+O1C(=O)C=CC12C***C2
+
+Spiro-epoxide
+O1[C;H2]C1([C;R]*)[C;R]
+O1CC12C**C2
+
+Spiro-isobenzylfuran-4-piperidine (NK2-antagonists)
+O1Cc2ccccc2C13CCN(*)CC3
+O1Cc2ccccc2C13CCN(*)CC3
+
+Spiropentyl
+[C;R1]1[C;R1][C;R1][C;R1][C;R2]1([*;R])[*;R]
+C1CCCC12C**C2
+
+4-Spiro-piperidines (1-subs.)
+[C;R1]1[C;H2][N;R1](*)[C;H2]C[C;R2]1([*;R])[*;R]
+C1CN(*)CCC12**2
+
+Spiro-pyrans
+[$([C;R1]);!$(C=O)]1[$([C;R1]);!$(C=O)][C;R2]([c,C,O;R])([c,C,O;R])[$([O;R1]);!$(O1CC1)]{C}[$([C;R1]);!$(C=O)]1
+O1C2(CCCC2)CCCC1
+
+3-Spiroquinuclidine
+[*;R1]C1([*;R1])C2CCN(C1)CC2
+*C1(*)C2CCN(C1)CC2
+
+Stallimycins
+Cn1ccc(c1)NC(=O)c2n(C)cc(c2)NC(=O)c3n(C)ccc3
+Cn1c(*)cc(c1)NC(=O)c2n(C)cc(c2)NC(=O)c3n(C)cc(*)c3
+
+Mefloquine analogs
+c1cc(nc2c(cccc12)C(F)(F)F)C(F)(F)F
+c1cc(nc2c(cccc12)C(F)(F)F)C(F)(F)F
+
+Mevastatin analogs
+CCC(C)C(=O)OC1CCC=C2C=CCCC12
+CCC(C)C(=O)OC1CCC=C2C=CCCC12
+#CC(O)CC(O)CC(=O)[OH] and [C;H3]CC([C;H3])C(=O)O # doesn't get lactones
+
+Steroid (4-ring; saturation unspecified)
+[#6;R1,R2]~1~[#6;R1]~[#6;R1]~[#6;R2]~2~[#6;R2]~3~[#6;R1]~[#6;R1]~[#6;R2]~4~[#6;R1]~[#6;R1,R2]~[#6;R1]~[#6;R1]~[#6;R2]4~[#6;R2]3~[#6;R1]~[#6;R1]~[#6;R2]~12
+C1CCC2C3CCC4CCCCC4C3CCC12.C1CCC2C3CCc4ccccc4C3CCC12
+
+Steroid (arom A ring; estrogens)
+# C4[$([C;R1]);!$(C=*)]C3CCC1C(C[$([C;R1]);!$(C=*)]c2c[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]cc12)C3[C;R1]4
+C4{C1}C3CCC1C(C{C1}c2c{c2}{c2}cc12)C3[C;R1]4
+C1CCC2C3CCc4ccccc4C3CCC12
+
+Steroid (delta-4,5)
+[C;R1]4CC=C~3[C;R1]~[C;R1]~C~2~[C;R2]1~[C;R1]~[C;R1]~C~[C;R2]~1~[C;R1]~[C;R1]~C2~C3~[C;R1]4
+C1CCC2C3CCC4=CCCCC4C3CCC12
+# can't match PREDNISOLONE METABENZOSULPHONIC ACID 
+# because bond wild-card '~' on ring #4 closure fails
+
+Steroid (delta 1,2 & 4,5)
+[C;R1]4~[C;R1]~C3~C~C~C1~C(~C~C~C2=CCC=CC12)~C3~[C;R1]4
+C1CCC2C3CCC4=CCC=CC4C3CCC12
+# incorrectly excludes R5220-C192-N295?
+
+Steroid (3-hydrazone or oxime; A-ring satur. unspec.)
+# CC34C[$([C;R1]);!$(C=*)]C1C(C~CC2~C~C(C~C~C12)=N)C3CC[$([C;R1]);!$(C=*)]4
+CC34C{C1}C1C(C~CC2~C~C(C~C~C12)=N)C3CC{C1}4
+*N=C1CCC2(C)C3CCC4(C)CCCC4C3CCC2=C1
+
+Steroid (11-OH; glucocorticoids)
+[C;R1]~4C~C~C~3~[C;R1]~[C;R1]~C~2~[C;R2]~1~[C;R1]~[C;R1]~C~[C;R2]~1~[C;R1]~[C;R1](O)~C2~C3~[C;R1]4
+C1CCC2C3CCC4CCCCC4C3C(O)CC12
+
+Steroid (9-F; flumethasones)
+[C;R1]~4C~C~C~3~[C;R1]~[C;R1]~C~2~[C;R2]~1~[C;R1]~[C;R1]~C~[C;R2]~1~[C;R1]~[C;R1]~C2(F)~C3~[C;R1]4
+#*C1CCC2C3CCC4CCCCC4C3(F)CCC12
+*C1CCC2C3CCC4CCCCC4C3(F)CCC12
+
+Steroid (16-methylene)
+[C;R1]~4C~C~C~3~[C;R1]~[C;R1]~C~2~[C;R2]~1~[C;R1]~[C;R1](=C)~C~[C;R2]~1~[C;R1]~[C;R1]~C2~C3~[C;R1]4
+C=C1C(*)C2(C)CCC3C4(C)CCC(=O)CC4CCC3C2C1
+
+Steroid (17-ethynyl or propynyl)
+[#6;R1]~4[#6]~[#6]~[#6]~3~[C;R1]~[C;R1]~C~2~[C;R2]~1~[C;R1]~[C;R1]~C(C#C)~[C;R2]~1~[C;R1]~[C;R1]~C2~[#6]3~[#6;R1]4
+*C#CC1CCC2C3CCC4CCCCC4C3CCC12
+
+Steroid-acetonide
+C1C~CC2C(~C~1)~CCC3C2CCC4C3CC5OCOC45
+O1COC2CC3C4CCC5CCCCC5C4CCC3C12
+
+Steroid-3-glycoside
+O1CCCCC1[O;R0][#6]~1~[#6]~[#6]~[#6]~2~C~3CCC4[C;R1][C;R1][C;R1]C4C3CC~[#6]~2~[#6]~1
+O1C(*)C(*)C(*)C(*)C1OC1CCC2C3CCC4C(*)CCC4C3CCC2C1
+
+Steroidal oxathiazines
+C1C2CCC3c4cc5C=NS(=O)(=O)Oc5cc4CCC3C2CC1
+*C1C2(C)CCC3c4cc5C=NS(=O)(=O)Oc5cc4CCC3C2CC1
+
+Sulfamates (steroid sulfatase inhib.)
+[O;H0]S(=O)(=O)[N;H2]
+*OS(=O)(=O)N
+
+Sulfanilylcarbamic acid esters
+{C}OC(=O)NS({C})(=O)=O
+*S(=O)(=O)NC(=O)O*
+
+Sulfate, ester or acid
+[O;O+0]S(=O)(=O)[O;O+0]
+*OS(=O)(=O)O*
+
+Sulfate Ion (alkyl)
+COS(=O)(=O)[O-]
+*COS(=O)(=O)[O-]
+
+Sulfinyl (as substituent)
+C[S;D3;R0](=O)[#6;R]
+*S(=O)C*
+
+Sulfonamido
+*[N;H1]S(*)(=O)=O
+*S(=O)(=O)N*
+
+Sulfonanilide (as para subst.)
+a[N;H1][S;R0](=O)(=O)c1cc[c;R1]([N,O,S,P,Br,Cl,F,I])cc1
+*NS(=O)(=O)c1ccc(N*)cc1
+#[N;H1][S;R0](=O)(=O)c1cc[c;R1](*)cc1 or [N;H1][S;R0](=O)(=O)c1c[c;R1](*)ccc1 or [N;H1][S;R0](=O)(=O)c1[c;R1](*)cccc1 # ortho/meta/para
+
+Sulfonic acid
+*S(=O)(=O)[OH,O-]
+*S(=O)(=O)O
+
+Sulfonurea
+[N;R0][C;R0](=O)[N;R0]S(=O)(=O)*
+*NC(=O)NS(=O)(=O)*
+
+N-oxide
+[CH3]N([CH3])(=O)[#6]
+[CH3]N([CH3])(=O)[CH2]*
+
+N-Sulfonylalanine
+OC(=O)[C;R0](*)[N;R0][S;R0](=O)(=O)*
+OC(=O)C(*)NS(=O)(=O)*
+
+Sulfoxide
+[#6][S;D3;R0](=O){C}
+*S(=O)*
+# {C}[S;D3;R0](=O){C} why does this not work?
+
+Tacrine analogs
+Nc2c1CCCCc1nc3ccccc23
+*Nc1c2CCCCc2nc3ccccc13
+
+Tamiflu analogs
+OC(=O)C1=CCCC(N)C1
+*OC(=O)C1=CC(*)C(*)C(N)C1
+
+Taxanes (taxol analogs, anti-neoplastics)
+C3CC4CC1C(CCC2OCC12)CCC(=C3)C4
+O1CC2C3CC4CCC=C(C4)CCC3CCC12
+
+Testosterone analogs
+O[C;R1]1[C;R1][C;R1]C2C3[C;R1][C;R1]C4=CC(=O)CCC4(C)[C;D3]3[CH2][CH2]C12C
+OC1CCC2C3CCC4=CC(=O)CCC4(C)C3CCC12C
+
+Tetracyclics-linear (incl. hetero & non-arom. analogs)
+[*;R1]4~[*;R1]~[*;R1]~*3~[*;R1]~*2~[*;R1]~*1~[*;R1]~[*;R1]~[*;R1]~[*;R1]~*1~[*;R1]~*2~[*;R1]~*3~[*;R1]4
+*4***3**2**1*****1**2**3*4
+
+Tetracycline (antibiotics)
+C(=O)C4=CCC3CC2Cc1ccccc1C(=O)C2=CC3C4=O
+*C(=O)C1=CCC2CC3Cc4ccccc4C(=O)C3=CC2C1=O
+
+Tetrahydrofuran-3-one
+# O=C1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]O[$([C;R1]);!$(C=*)]1
+O=C1{C1}{C1}O{C1}1
+O1CC(=O)CC1
+
+1,2,3,4-Tetrahydroquinolines
+[$([C;R1]);!$(C=*)]2[$([C;R1]);!$(C=*)][N+0]c1[c;R1][c;R1][c;R1][c;R1]c1[$([C;R1]);!$(C=*)]2
+C2CNc1ccccc1C2
+
+Tetrahydrothiophenes & oxides
+# [S+0;R1;D2,D3]1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+[S+0;R1;D2,D3]1{C1}{C1}{C1}{C1}1
+S1CCCC1
+
+Tetralin,2-amino
+# *[N;R0][C;R1]1[C;R1]c2[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]c2[C;R1][C;R1]1
+*[N;R0][C;R1]1[C;R1]c2{c2}{c2}{c2}{c2}c2[C;R1][C;R1]1
+*NC1Cc2ccccc2CC1
+
+Tetraoxane
+[C,N]1CCC3(CC1)OOC2(CC[C,N]CC2)OO3
+C1CCC3(CC1)OOC2(CCCCC2)OO3 
+
+Tetrazole (1H)
+c1[nH]nnn1
+*c1[nH]nnn1
+
+Tetrazole (1-subs)
+[n;H0;R1;D3][n;D2][n;D2][n;D2]c
+*n1nnnc1
+
+Tetrazolin-5-oxo
+[#6]n1c(=O)n([#6])nn1
+Cn1c(=O)n(C)nn1
+
+Thalidomides
+O=C3CCC(N2Cc1ccccc1C2)C(=O)N3
+*C1c2ccccc2C(=O)N1C2C(=O)NC(=O)CC2
+
+Theophyllines (1,3-alkyl)
+Cn1c(=O)n(C)c(=O)c2[nH]cnc12
+Cn1c(=O)n(C)c(=O)c2[nH]cnc12
+
+1,2,4-Thiadiazole
+[n;X2]1[s;X2]c[n;X2]c1
+n1scnc1
+
+1,2,5-Thiadiazole
+[c;R1]1[c;R1]n{s2}n1
+c1cnsn1
+
+1,2,5-Thiadiazole-oxide
+[c;R1]1[c;R1]ns(=O)n1
+c1cns(=O)n1
+
+1,3,4-Thiadiazole
+[s;X2]1c[n;X2][n;X2]c1
+s1cnnc1
+
+Thiazole
+# [n;X2]1[$([c;R1]);!$(c=*)][s;X2][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+[n;X2]1{c2}[s;X2]{c2}{c2}1
+n1cscc1
+
+Thiazole (3,4-dihydro)
+# N1=C(*)[S;X2][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+N1=C(*)[S;X2]{C1}{C1}1
+N1=C(*)SCC1
+
+Thiazolidinedione (3H)(antidiabetics)
+# [$([C;R1]);!$(C=*)]1SC(=O)[N;H]C1=O
+{C1}1SC(=O)[N;H]C1=O
+C1SC(=O)NC1=O
+
+Thiazolium
+*[n+]1[c;R1][c;R1][s;R1][c;R1]1
+*[n+]1ccsc1
+
+Thiazolin-2-ylidene
+# [c,C,N,O][n;R1]1[$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]s[c;R1]1=*
+[c,C,N,O][n;R1]1{c2}{c2}s[c;R1]1=*
+*N1C=CSC1=*
+
+Thiazolo[5,4,b]quinoline
+s1c(*)nc2c(*)c3ccccc3nc12
+s1c(*)nc2c(*)c3ccccc3nc12
+
+Thieno[3,2-c]pyridine,6,7-dihydro
+*[N+0]1CCc2s[c;R1][c;R1]c2C1
+*N1CCc2sccc2C1
+
+Thieno[2,3,d]pyrimidine
+# s1[c;R1][c;R1]c2[$([c;R1]);!$(c=*)]n[$([c;R1]);!$(c=*)]nc12
+s1[c;R1][c;R1]c2{c2}n{c2}nc12
+s1ccc2cncnc12
+
+Thieno[2,3,d]pyrimidin-4-one
+# n1c(=O)c2[c;R1][c;R1]sc2n[$([c;R1]);!$(c=*)]1
+n1c(=O)c2[c;R1][c;R1]sc2n{c2}1
+*n1c(=O)c2ccsc2nc1
+
+Thieno[2,4d]pyrimidin-dione
+*n1c(=O)n(*)c(=O)c2[c;R1][c;R1]sc12
+Cn1c(=O)n(C)c(=O)c2ccsc12
+
+Thienothiophene
+c1sc2sccc2c1
+*c1sc2sc(*)cc2c1
+
+Thioamide (NH)
+{C}[C;R0](=S)[N;H1]{C}
+*C(=S)N*
+
+Thioamide (NH2)
+{C}C(=S)[NH2]
+*C(=S)N
+
+Thio-carbazides-&-ureas
+[N;H1,H2]C(=S)[N;H1][N;H1,H2]
+*NC(=S)NN*
+
+Thiochromone
+s1[c;R1][c;R1]c(=O)c2c[c;R1][c;R1][c;R1]c12
+s1ccc(=O)c2ccccc12
+
+Thiocyanate
+[#6]SC#N
+*SC#N
+
+Thiol
+[S;H1][$([#6]);!$([#6]=,#*)]
+*SH
+# {C}[S;H1] # buggy
+
+Thiomorpholine (1-subs.)
+# *N1[$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)][$([S;R1]);!$(S=*)][$([C;R1]);!$(C=*)][$([C;R1]);!$(C=*)]1
+*N1{C1}{C1}[$([S;R1]);!$(S=*)]{C1}{C1}1
+*N1CCSCC1
+
+Thiomorpholine-dioxide
+*N1CCS(=O)(=O)CC1
+*N1CCS(=O)(=O)CC1
+
+Thiophene
+[s;R1]1[c;R1][c;R1][c;R1][c;R1]1
+s1cccc1
+
+Thiopyranindoles
+[#6]n1cc2SCCc3cccc1c23
+Cn1cc2SCCc3cccc1c23
+
+Thiosemicarbazono (Formyl) (tuberculostatic)
+[C;R0]=N[NH]C(=S)[NH2]
+*C=NNC(=S)N
+
+Thiosemicarbazono (Keto)
+*[C;R0](*)=N[NH]C(=S)[NH2]
+*C(*)=NNC(=S)N
+
+Thiourea
+[$([#6]);!$([#6]=*)][N;H1;R0][C;R0](=S)[N;H1;R0][$([#6]);!$([#6]=*)]
+*NC(=S)N*
+# {C}[N;H1;R0][C;R0](=S)[N;H1;R0]{C} # buggy, 'c' in thiazol type rings are not counting as isolating
+
+Thioxanth-9-ene (antipsychotics)
+*C=C1c2ccccc2Sc3ccccc13
+*C=C1c2ccccc2Sc3ccccc13
+
+Thioxanthen-9-one
+O=c1c2[c;R1][c;R1][c;R1][c;R1]c2sc3[c;R1][c;R1][c;R1][c;R1]c13
+O=c1c2ccccc2sc3ccccc13
+
+Thromboxane antagonist (auxiliary pharmacophore)
+*[C;R0]=[C;H1;R0][C;H2;R0][C;H2;R0]C(=O)[OH]
+*C=CCCC(=O)O
+
+Thymidines
+[c;H]1c(C)c(=O)[nH]c(=O)n1[r5]
+c1c(C)c(=O)[nH]c(=O)n1C1CCC(CO)O1
+
+Thymine/Uracil analogs (1-subs)
+[c;R1]1[c;R1]c(=O)[nH]c(=O)n1[C;!r5]
+Cn1c(=O)[nH]c(=O)cc1
+
+TIBO (oxygen analogs) (antiviral HIV)
+*N1CCn2c(=[O,S])[nH]c3cccc(C1)c23
+*N1CCn2c(=O)[nH]c3cccc(C1)c23
+
+TOPOsides (topoisomerase inhib.)
+c1ccccc1C1C2C(=O)OCC2Cc3cc4OCOc4cc13
+c1c(*)c(*)c(*)cc1C1C2C(=O)OCC2C(*)c3cc4OCOc4cc13
+
+Trialkylsilyl
+[Si](C)(C)C
+*[Si](C)(C)C
+
+1,3,4b-Triazafluourenes (MDR inhib.)
+*c1ncnc2c(*)c3CCCCn3c12
+*c1ncnc2c(*)c3CCCCn3c12
+
+2,4,9-Triazafluorenes-9H (MDR inhib.)
+[nH]1c2ccccc2c3ncncc13
+[nH]1c2ccccc2c3ncncc13
+
+2,4,9-Triazafluorenes-9-subst (MDR inhib)
+[C,O,N][n;H0]1c2ccccc2c3ncncc13
+*n1c2ccccc2c3ncncc13
+
+Triazene (alkylating agent)
+*[N;R0]=[N;R0][N;R0](*)*
+*N=NN(*)*
+
+Triazine (sym. aromatic)
+# [n;H0]1[$([c;R1]);!$(c=*)][n;H0][$([c;R1]);!$(c=*)][n;H0][$([c;R1]);!$(c=*)]1
+[n;H0]1{c2}[n;H0]{c2}[n;H0]{c2}1
+n1cncnc1
+
+Triazine (sym)-trione
+Cn1c(=O)n(C)c(=O)n(C)c1=O
+*Cn1c(=O)n(C*)c(=O)n(C*)c1=O
+
+Triazine (sym. non-aromatic)
+# [N;R1]1[$([C;R1]);!$(C=*)][N;R1][$([C;R1]);!$(C=*)][N;R1][$([C;R1]);!$(C=*)]1
+[N;R1]1{C1}[N;R1]{C1}[N;R1]{C1}1
+*N1CN(*)CN(*)C1
+
+1,2,4-Triazine
+{c2}1{c2}nn{c2}n1
+c1cnncn1
+
+Triazine,1,2-dihydro (sym.)
+[C;R1]1NC=NC=N1
+*C1(*)N(*)C=NC=N1
+
+1,2,4-Triazine-5-one (herbicides)
+# n1c(=O)[$([c;R1]);!$(c=*)][n+0][n+0][$([c;R1]);!$(c=*)]1
+n1c(=O){c2}[n+0][n+0]{c2}1
+*n1c(=O)cnnc1
+
+Triazole (1,2,4-triazole, 4-amino)
+[N;!H2]n1cnnc1
+*Nn1cnnc1
+
+Triazole (1H,2,3)
+[nH]1nn[c;R1][c;R1]1
+[nH]1nncc1
+
+Triazole (1-sub,2,3)
+# *[n+0;H0]1[n+0;H0][n+0;H0][$([c;R1]);!$(c=*)][$([c;R1]);!$(c=*)]1
+*[n+0;H0]1[n+0;H0][n+0;H0]{c2}{c2}1
+*n1nncc1
+
+Triazole (1H,2,4)
+# [nH]1n[$([c;R1]);!$(c=*)]n[$([c;R1]);!$(c=*)]1
+[nH]1n{c2}n{c2}1
+[nH]1ncnc1
+
+Triazole (1-sub,2,4)
+# *[n+0;H0;R1]1[n+0;H0][$([c;R1]);!$(c=*)][n+0;H0][$([c;R1]);!$(c=*)]1
+*[n+0;H0;R1]1[n+0;H0]{c2}[n+0;H0]{c2}1
+*n1ncnc1
+
+Triazole (1,2,4H)
+# [nH]1[$([c;R1]);!$(c=*)]nn[$([c;R1]);!$(c=*)]1
+[nH]1{c2}nn{c2}1
+[nH]1cnnc1
+
+1,2,4-Triazole-3-thione (antifungal)
+# [n;H0]1c(=S)[n;H0][n;H0][$([c;R1]);!$(c=*)]1
+[n;H0]1c(=S)[n;H0][n;H0]{c2}1
+*n1c(=S)n(*)nc1
+
+1,2,4-Triazolin-5-one (1,4-subs.)
+# [#6]n1c(=O)n([#6])n[$([c;R1]);!$(c=*)]1
+[#6]n1c(=O)n([#6])n{c2}1
+Cn1c(=O)n(C)nc1
+
+1,2,4-Triazolo[3,4a]phthalazines
+*c1nnc2c3ccccc3cnn12
+*c1nnc2c3ccccc3cnn12
+
+1,2,3-Triazolo[4,5d]pyrimidine
+n1nn([#6])c2ncncc12
+n1nn(*)c2ncncc12
+
+1,2,4-Triazolo[1,5c]pyrimidine
+c1nn2cn[c;R1][c;R1]c2n1
+*c1nn2cncc(*)c2n1
+
+Triethylamine analogs
+[C;!H3][CH2]N([CH2][CH3])[CH2][CH3]
+*CCN(CC)CC
+# very broad target
+
+Trifluoromethio
+[S;D2]C(F)(F)F
+*SC(F)(F)F
+
+Trifluoromethyl
+C(F)(F)F
+*C(F)(F)F
+
+Trifluoromethylsulfonamido
+*[NH]S(=O)(=O)C(F)(F)F
+*[NH]S(=O)(=O)C(F)(F)F
+
+1,2,3-Trimethoxybenzenes
+*[c;R1]1[c;R1]c(OC)c(OC)c(OC)[c;R1]1
+*c1cc(OC)c(OC)c(OC)c1
+
+Trisulfide
+{C}SSS
+*SSS*
+
+Tropanes
+[N+0]1[C;R2]2[C;R1][C;R1][C;R1][C;R2]1[C;R1][C;R1]2
+*N1C2CC(*)CC1CC2
+
+Tropanol analogs
+[N+0]1[C;R2]2[C;R1][C;R1](O)[C;R1][C;R2]1[C;R1]C2
+*N1C2CC(O*)CC1CC2
+
+Tryptamines
+[n;H]1cc([CH2;R0][CH2;R0][N;R0])c2ccccc12
+[nH]1cc(CCN*)c2ccccc12
+
+Tryptanthrin analogs (anti-fungals, neoplastics, plasmodia)
+[C,s]2c1[c,n][c,n][c,n][c,n]c1n4c2nc3[c,n][c,n][c,n][c,n]c3c4=O
+O=C2c1ccccc1n4c2nc3ccccc3c4=O
+
+Tryptophan (& peptide analogs)
+[C;R0](=O)[C;R0]([N;H0,H1])Cc1c[nH]c2ccccc12
+*C(=O)C(N*)Cc1c[nH]c2ccccc12
+# this needs work!
+
+Ureas (1-subst.)
+{C}[N;H1]C(=O)[N;H2]
+*NC(=O)N
+
+Ureas (1,3-disubst, linear)
+{C}[N;R0;H1]C(=O)[N;R0;H1]{C}
+*NC(=O)N*
+
+Ureas (1,3-disubst, ring)
+{C}[N;R1;H1]C(=O)[N;R1;H1]{C}
+C1N(*)C(=O)N(*)C1
+
+Uridines
+[c;H1]1[c;H1]c(=O)[nH]c(=O)n1* or [c;H1]1c({!C})c(=O)[nH]c(=O)n1*
+c1c(*)c(=O)[nH]c(=O)n1C1CCC(CO)O1
+
+Vasopressins (cyclic)
+C1NC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CCSSC1
+*C1NC(=O)CNC(=O)CNC(=O)CNC(=O)CNC(=O)CCSSC1
+
+Vasopressins (Conivaptan type)
+[N;R1]C(=O)c1ccc(cc1)NC(=O)c1ccccc1c1ccccc1
+C1CCN(*)c2ccccc2N1C(=O)c1ccc(cc1)NC(=O)c1ccccc1c1ccccc1
+
+Vincamine analogs
+C2~C~C1~C~Cn4c3C1N(C2)CCc3c5ccccc45
+C15CCCN2CCc3c(C12)n(c4ccccc34)C(C5)
+
+Vincristine analogs
+CCC34CCC2N(C)c1cc(OC)c(cc1C25CCN(CC=C3)C45)C(C(=O)OC)c7cc6ccccc6[nH]7
+CCC34CCC2N(C)c1cc(OC)c(cc1C25CCN(CC=C3)C45)C(C(=O)OC)c7cc6ccccc6[nH]7
+# but what about VINFLUNINE?
+
+Vitamin A analogs
+CC(=C)C=CC=C(C)C=CC1=C(C)CCCC1(C)C
+CC(=C*)C=CC=C(C)C=CC1=C(C)CCCC1(C)C
+
+Vitamin D analogs
+C1~C~CC2(C)[C;R1][C;R1][C;R1]C(C21)=CC=C1CCCCC1
+*C1C2(C)CCCC(C2CC1)=CC=C1C(=C)CCCC1
+
+Xanthate
+{C}OC(=S)S*
+*OC(=S)S*
+
+Xanthen-9-one
+O=c2c1[c;R1][c;R1][c;R1][c;R1]c1oc3[c;R1][c;R1][c;R1][c;R1]c23
+O=c1c2ccccc2oc3ccccc13
+
+Xanthine (3-subs)
+Cn1c(=O)[nH]c(=O)c2[nH]cnc12
+Cn1c2nc[nH]c2c(=O)[nH]c1=O
+
+Zinc (containing)
+[Zn]
+*[Zn]*
