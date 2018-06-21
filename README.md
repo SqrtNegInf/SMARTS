@@ -4,7 +4,7 @@ SMARTS is a tool for structure searching, the process of finding a particular pa
 (a *subgraph*) in a molecule (a *graph*). Structural searches are
 used in virtually every computer-based chemistry application.
 
-### Defining the terms
+### Defining the terms, an example
 
 * SMILES = __S__ implified __M__ olecular __I__ nput __L__ ine __E__ diting __S__ pecification
 * SMARTS = __SM__ ILES __Ar__ bitrary __T__ arget __S__ pecification
@@ -17,6 +17,14 @@ A SMARTS is an expression that looks for a match of a particular arrangement
 of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
 
 * C(c)(c)C([Br,Cl,F])([Br,Cl,F])([Br,Cl,F])
+
+This matches DDT, but three other compounds:
+
+[DDT search results](./ddt.png)
+
+* 2,2-DIPHENYL-1,1,1-TRICHLOROETHANE
+* 1,1,1-TRIFLUORO-2,2-DI(P-METHOXYPHENYL)ETHANE
+* METHOXYCHLOR
 
 Inspired by UNIX implementation of the mathematical concept of regular expressions, 
 SMARTS can be viewed as a domain-specific grammar for chemical compounds, combining 
