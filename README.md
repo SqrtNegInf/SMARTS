@@ -4,7 +4,13 @@ SMARTS is a tool for structure searching, the process of finding a particular pa
 (a *subgraph*) in a molecule (a *graph*). Structural searches are
 used in virtually every computer-based chemistry application.
 
-### Defining the terms, an example
+Initially inspired by UNIX implementation of regular expressions, 
+SMARTS evolved into somethings that can be viewed as a 
+domain-specific grammar for chemical compounds, combining 
+the functions of traversing a graph and matching a pattern.
+An overview of the syntax can be in the [SMARTS summary](./cheat-sheet.txt)
+
+### Defining terms, an example
 
 * SMILES = __S__ implified __M__ olecular __I__ nput __L__ ine __E__ diting __S__ pecification
 * SMARTS = __SM__ ILES __Ar__ bitrary __T__ arget __S__ pecification
@@ -20,20 +26,17 @@ of atoms/bonds in that compound, here di-aryl ethane with any 3 halogens:
 
 This matches DDT, but three other compounds:
 
-[DDT search results](./ddt.png)
-
 * 2,2-DIPHENYL-1,1,1-TRICHLOROETHANE
 * 1,1,1-TRIFLUORO-2,2-DI(P-METHOXYPHENYL)ETHANE
 * METHOXYCHLOR
 
-Inspired by UNIX implementation of the mathematical concept of regular expressions, 
-SMARTS can be viewed as a domain-specific grammar for chemical compounds, combining 
-the functions of traversing a graph and matching a pattern.
-An overview of the syntax can be in the [SMARTS summary](./cheat-sheet.txt)
+Here's an image of the [DDT search results](./ddt.png)
 
 ### Scaffold dictionary
 
-nearly [700 SMARTS targets](./scaffold-dictionary.txt)
+Precisely targeted structural searches are often non-trivial, so it makes sense
+to develop a standard library for re-use. Here is a compendium of nearly 
+[700 SMARTS targets](./scaffold-dictionary.txt).
 
 ### Scaffold screens
 
